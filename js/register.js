@@ -1,9 +1,9 @@
 class User {
-  constructor(name, email, password, plan) {
+  constructor(name, email, password, phone) {
     this.name = name;
     this.email = email;
     this.password = password;
-    this.plan = plan;
+    this.phone = phone;
     this.isLoggedIn = false;
     this.hasRegistered = false;
   }
@@ -90,9 +90,12 @@ authForm.addEventListener("submit", (e) => {
 
   if (isRegisterMode) {
     const name = document.getElementById("name").value.trim();
-    const plan = document.getElementById("plan").value;
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const password = document.getElementById('password').value.trim();
 
-    if (!name || !plan) {
+
+    if (!name || ! email || !phone || !password) {
       alert("Please complete all registration fields.");
       return;
     }
@@ -104,10 +107,11 @@ authForm.addEventListener("submit", (e) => {
       return;
     }
 
-    const newUser = new User(name, email, password, plan);
+    const newUser = new User(name, email, password, phone);
     newUser.registerUser();
     authForm.reset();
     isRegisterMode = false;
+    alert("Hey" + name + "welcome to Gymnergy!")
     toggleBtn.click();
 
   } else {
