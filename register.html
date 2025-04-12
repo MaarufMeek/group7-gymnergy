@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gymnergy - Login/Register</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- 🧭 Navigation -->
+<header>
+    <nav class="navbar">
+        <div class="logo"><span>Gym</span>nergy</div>
+
+        <div class="sidebar" id="sidebar">
+            <button class="toggle-btn" id="toggleBtn"><i class="fa fa-angle-left"></i></button>
+            <nav class="sidebar-nav">
+                <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
+                <a href="#services" title="Services"><i class="fas fa-dumbbell"></i></a>
+                <a href="plans.html" title="Plans"><i class="fas fa-clipboard-list"></i></a>
+                <a href="register.html" title="Login/Register"><i class="fas fa-user-plus"></i></a>
+            </nav>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="plans.html">Plans</a></li>
+            <li><a href="register.html">Register/Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- 📝 Auth Form -->
+<section class="auth-container">
+    <form id="authForm" class="auth-form">
+        <h2 id="formTitle">Login</h2>
+        <div class="input-container">
+            <input type="email" id="email" placeholder="" required>
+            <label for="email">Email</label>
+        </div>
+
+        <div class="input-container">
+            <input type="email" id="password" placeholder="" required>
+            <label for="password">Password</label>
+        </div>
+
+
+        <div id="registerFields" class="hidden">
+            <div class="input-container">
+                <input type="text" id="name" placeholder=""/>
+                <label for="name">Fullname</label>
+            </div>
+            <div class="input-container">
+                <input type="text" id="phone" placeholder=""/>
+                <label for="phone">Phone</label>
+            </div>
+            <label for="plan"></label>
+            <select id="plan">
+                <option value="">Choose Plan</option>
+                <option value="basic">Basic</option>
+                <option value="premium">Premium</option>
+                <option value="pro">Pro</option>
+            </select>
+        </div>
+        <div class="butt_con">
+            <button type="submit" id="submitBtn">Log In</button>
+            <p>
+                <a id="toggle">
+                    <i class="fa fa-user-plus"></i> Register
+                </a>
+            </p>
+        </div>
+    </form>
+</section>
+<script src="js/register.js"></script>
+
+</body>
+</html>

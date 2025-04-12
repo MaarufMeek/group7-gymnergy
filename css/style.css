@@ -55,7 +55,7 @@ h1, h2, h3 {
     content: '';
     width: 0%;
     height: 3px;
-    background-color: #f44336;
+    background-color: #d3ba32;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -229,18 +229,21 @@ h1, h2, h3 {
 
 .cta-btn {
     display: inline-block;
-    background: #f44336;
-    color: white;
+    background-color: #f44336;
+    color: #ffffff;
     padding: 0.75rem 2rem;
     border-radius: 45px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1.25rem;
     margin-top: 1rem;
-    transition: background 0.3s;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .cta-btn:hover {
-    background: #c0392b;
+    background-color: #9d8a21;
+    color: #111111;
+    transform: scale(1.05);
 }
 
 
@@ -679,3 +682,145 @@ footer {
     }
 }
 
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../images/strengh.jpg') center/cover no-repeat;
+    margin-left: 4px;
+    /*padding: 1rem;*/
+}
+
+.auth-form {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    max-width: 400px;
+    opacity: 0.7;
+    width: 100%;
+}
+
+.auth-form h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    /*font-weight: lighter;*/
+    color: white;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-container input, select {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 20px 5px;
+    font-size: 1rem;
+    font-family: "Barlow Condensed", sans-serif;
+    border: 2px solid darkgoldenrod;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-container label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    /*background: white;*/
+    padding: 0 5px;
+    font-size: 16px;
+    color: #999;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.input-container input:focus {
+    border-color: #9b8a2d;
+}
+
+.input-container input:focus + label,
+.input-container input:not(:placeholder-shown) + label {
+    top: 0;
+    left: 10px;
+    /*font-size: 12px;*/
+    color: #ceb218;
+    font-size: 1.3rem;
+}
+
+
+/*.auth-form input,*/
+/*.auth-form select {*/
+/*    width: 100%;*/
+/*    margin-bottom: 1rem;*/
+/*    padding: 0.8rem;*/
+/*    font-size: 1rem;*/
+/*    font-family: "Barlow Condensed", sans-serif;*/
+/*    border: 2px solid transparent; !* Reserve space for border *!*/
+/*    border-radius: 5px;*/
+/*    outline: none;*/
+/*    transition: box-shadow 0.3s ease, border-color 0.3s ease;*/
+/*}*/
+
+/*.auth-form input:focus,*/
+/*.auth-form select:focus {*/
+/*    border-color: #9b8a2d; !* Keeps border size same, just changes color *!*/
+/*    box-shadow: 0 0 2px 1px #9b8a2d; !* Outward glow *!*/
+/*}*/
+
+
+.auth-form button {
+    width: 80%;
+    padding: 0.9rem;
+    background-color: #ff4444;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+
+.butt_con {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.butt_con button {
+    color: #0a0101;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.butt_con p a {
+    color: white;
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.butt_con p a:hover {
+    color: #d3ba32;
+    transform: scale(1.05);
+}
+
+
+.auth-form button:hover {
+    background-color: #d3ba32;
+}
+
+.hidden {
+    display: none;
+}
