@@ -9,11 +9,17 @@
     <link rel="stylesheet" href="css/style.css"/>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
           rel="stylesheet">
+    rel="stylesheet">
 
     <!-- AOS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!--    Leaflet for map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
 </head>
 <body>
 
@@ -49,7 +55,7 @@
             <div class="service-icon">
                 <img src="images/personal.jpg" alt="Personal Training"/>
             </div>
-                <h3>Personal Training</h3>
+            <h3>Personal Training</h3>
             <div class="slant-overlay">
                 <div class="overlay-txt">
                     <p>Customized workouts and guidance from certified personal trainers.</p>
@@ -79,7 +85,7 @@
             <h3>Strength Training</h3>
             <div class="slant-overlay">
                 <div class="overlay-txt">
-                     <p>Get expert advice to fuel your body for better performance.</p>
+                    <p>Get expert advice to fuel your body for better performance.</p>
                 </div>
             </div>
 
@@ -91,9 +97,9 @@
                 <img src="images/personal.jpg" alt="Online Coaching"/>
             </div>
             <h3>Aerobics</h3>
-             <div class="slant-overlay">
+            <div class="slant-overlay">
                 <div class="overlay-txt">
-                     <p>Train from anywhere with our virtual coaching options.</p>
+                    <p>Train from anywhere with our virtual coaching options.</p>
                 </div>
             </div>
 
@@ -107,21 +113,48 @@
     <h2>We Run <span id="session-counter">0</span> Sessions Daily</h2>
 </section>
 
-<!-- 📍 Map Section -->
-<section class="map-section">
-    <h3>Find Us Here</h3>
+<!-- CTA SECTION -->
+<section class="cta-section" data-aos="zoom-in" data-aos-duration="1500">
+    <div class="cta-content" data-aos="fade-up" data-aos-duration="1500">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>Join hundreds of students making the most of their time on campus.</p>
+        <a href="#contact" class="cta-button">Sign Up Now</a>
+    </div>
 </section>
 
+
+<!-- MAP SECTION -->
+<section id="location" class="map-section">
+    <h2>Find Us</h2>
+    <div id="map"></div>
+</section>
+
+
 <!-- 🔗 Footer -->
-<footer>
+<footer class="footer">
     <div class="footer-content">
-        <p>Contact: gymnergy@example.com | +123 456 789</p>
-        <p>© 2025 Gymnergy. All rights reserved.</p>
+        <div class="footer-section contact">
+            <p>Contact Us</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123 456 7890</p>
+        </div>
+
+        <div class="footer-section social">
+            <div class="social-icons">
+                <a href="#" class="social-icon facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
     </div>
 </footer>
 
+
 <!-- AOS Script -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script>
     AOS.init();
 </script>
