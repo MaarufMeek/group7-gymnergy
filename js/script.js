@@ -46,6 +46,23 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Add a marker with popup
 L.marker([lat, lng]).addTo(map)
-    .bindPopup('<b>We are here!</b><br/>KNUST Main Campus')
+    .bindPopup('<b>We are here!</b><br/>Aaamusted - K')
     .openPopup();
+
+
+
+
+   document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    }
+});
+
+
+
 

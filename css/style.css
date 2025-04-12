@@ -66,6 +66,46 @@ h1, h2, h3 {
     width: 100%;
 }
 
+/* HAMBURGER styles */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #111;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        padding: 1rem;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+    }
+
+    #navLinks {
+        display: none;
+    }
+
+    #navLinks.show {
+        display: block;
+    }
+}
+
+
 /* --- Hero Section --- */
 .hero {
     position: relative;
@@ -97,7 +137,7 @@ h1, h2, h3 {
 .hero-content h1 {
     font-size: 7rem;
     margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.64);
+    color: rgba(255, 255, 255, 0.82);
 
 }
 
@@ -302,12 +342,13 @@ footer {
     color: #f44336;
 }
 
-/* map section*/
+/* map section */
 .map-section {
     padding: 2rem;
     background-color: #f9f9f9;
     text-align: center;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .map-section h2 {
@@ -324,6 +365,17 @@ footer {
     margin: 0 auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 600px) {
+    #map {
+        height: 300px; /* or any value that works better for your layout */
+    }
+
+    .map-section h2 {
+        font-size: 2rem;
+    }
 }
 
 
@@ -479,6 +531,10 @@ footer {
 @media (max-width: 768px) {
     .services-container {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
     }
 }
 

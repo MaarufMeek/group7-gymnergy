@@ -4,15 +4,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Gymnergy - Unleash Your Inner Beast</title>
-
     <!-- CSS Styles -->
     <link rel="stylesheet" href="css/style.css"/>
-
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
-          rel="stylesheet">
-    rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap" rel="stylesheet">
     <!-- AOS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <!--    Leaflet for map-->
@@ -23,11 +18,20 @@
 </head>
 <body>
 
+
+
 <!-- 🧭 Navigation -->
 <header>
     <nav class="navbar">
         <div class="logo"><span>Gym</span>nergy</div>
-        <ul class="nav-links">
+
+        <!-- Add this hamburger button -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            ☰
+        </button>
+
+        <!-- Make sure this has an ID -->
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="plans.html">Plans</a></li>
@@ -35,6 +39,8 @@
         </ul>
     </nav>
 </header>
+
+
 
 <!-- 💥 Hero Section -->
 <section class="hero">
@@ -71,7 +77,7 @@
             <h3>Yoga</h3>
             <div class="slant-overlay">
                 <div class="overlay-txt">
-                    <<p>Engage in dynamic group workouts to stay motivated and fit.</p>
+                    <p>Engage in dynamic group workouts to stay motivated and fit.</p>
                 </div>
             </div>
 
@@ -110,7 +116,7 @@
 
 <!-- 📈 Session Counter (coming soon) -->
 <section class="counter-section">
-    <h2>We Run <span id="session-counter">0</span> Sessions Daily</h2>
+    <p>We Run <span id="session-counter">0</span> Sessions Daily</p>
 </section>
 
 <!-- CTA SECTION -->
@@ -135,7 +141,7 @@
     <div class="footer-content">
         <div class="footer-section contact">
             <p>Contact Us</p>
-            <p>Email: info@example.com</p>
+            <p>Email: meek@admin.com</p>
             <p>Phone: +123 456 7890</p>
         </div>
 
