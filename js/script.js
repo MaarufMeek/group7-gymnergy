@@ -62,6 +62,16 @@ L.marker([lat, lng]).addTo(map)
         });
     }
 });
+   
+   
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('expanded');
+        toggleBtn.innerHTML = sidebar.classList.contains('expanded') ?
+            '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
+    });
 
 
 
