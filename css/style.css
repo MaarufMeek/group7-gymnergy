@@ -700,6 +700,8 @@ footer {
     max-width: 400px;
     opacity: 0.7;
     width: 100%;
+    border-top: 4px  solid #b29f36;
+
 }
 
 .auth-form h2 {
@@ -717,7 +719,7 @@ footer {
 }
 
 .input-container input, select {
-    width: 100%;
+    width: 90%;
     padding: 0.8rem;
     margin: 20px 5px;
     font-size: 1rem;
@@ -753,26 +755,6 @@ footer {
     color: #ceb218;
     font-size: 1.3rem;
 }
-
-
-/*.auth-form input,*/
-/*.auth-form select {*/
-/*    width: 100%;*/
-/*    margin-bottom: 1rem;*/
-/*    padding: 0.8rem;*/
-/*    font-size: 1rem;*/
-/*    font-family: "Barlow Condensed", sans-serif;*/
-/*    border: 2px solid transparent; !* Reserve space for border *!*/
-/*    border-radius: 5px;*/
-/*    outline: none;*/
-/*    transition: box-shadow 0.3s ease, border-color 0.3s ease;*/
-/*}*/
-
-/*.auth-form input:focus,*/
-/*.auth-form select:focus {*/
-/*    border-color: #9b8a2d; !* Keeps border size same, just changes color *!*/
-/*    box-shadow: 0 0 2px 1px #9b8a2d; !* Outward glow *!*/
-/*}*/
 
 
 .auth-form button {
