@@ -1,0 +1,132 @@
+/* --- Google Fonts --- */
+body {
+  font-family: 'Abel', sans-serif;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  margin: 0;
+}
+
+/* --- Navigation --- */
+.navbar {
+  font-family: 'Bebas Neue', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 34px;
+}
+
+.logo span {
+  color: #f44336;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.nav-links li a{
+    position: relative;
+    padding-bottom: 1px;
+    cursor: pointer;
+}
+
+.nav-links li a::after {
+    content: '';
+    width: 0%;
+    height: 3px;
+    background-color: #f44336;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* --- Hero Section --- */
+.hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+  z-index: -1;
+}
+
+.hero-content {
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: #f44336;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 20px ;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover {
+  background: #c0392b;
+}
+
+
+/* --- Footer --- */
+footer {
+  background: #111;
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+}
