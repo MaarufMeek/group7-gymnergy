@@ -1,3 +1,18 @@
+function showToast(message, type = "info") {
+    const toastContainer = document.getElementById("toast-container");
+    const toast = document.createElement("div");
+
+    toast.classList.add("toast", type);
+    toast.textContent = message;
+
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => {
+        toast.remove();
+    }, 3000); // 3 seconds
+}
+
+
 // Class to manage cur_user data, including registration, login, logout, and plan subscription
 class User {
     // Constructor initializes a cur_user object with basic properties and optional plan
@@ -86,9 +101,9 @@ class PlanManager {
     constructor() {
         // Available plans with names and prices
         this.plans = [
-            {name: 'Bronze', price: 10},
-            {name: 'Gold', price: 10},
-            {name: 'Platinum', price: 10}
+            {name: 'Bronze', price: 'GHS140/m'},
+            {name: 'Gold', price: 'GHS220/m'},
+            {name: 'Platinum', price: 'GHS422/m'}
         ];
 
         console.log(this.plans)
@@ -117,13 +132,14 @@ class PlanManager {
     selectPlan(planName) {
         // Check if plan name is valid or is No Plan
         if (!this.plans.some(plan => plan.name === planName) && planName !== 'No Plan') {
+            showToast('Invalid plan selection', 'error')
             alert('Invalid plan selection');
             return;
         }
 
         // Set current plan
         this.currentPlan = planName;
-        alert(`You have selected ${planName} plan`);
+        showToast(`You have selected ${planName} plan`, 'success')
 
         // Update plan in the cur_user object and save it
         if (this.currentUser) {
@@ -138,7 +154,7 @@ class PlanManager {
     // Cancels the cur_user's current plan
     cancelPlan() {
         if (this.currentPlan === 'No Plan') {
-            alert('You currently have no plans')
+            showToast('Your currently have no plans', 'info')
             return;
         }
         if (confirm('You want to cancel your current plan?')) {
@@ -164,7 +180,7 @@ class PlanManager {
 
         // Check if already at highest plan or plan not found
         if (index === -1 || index === this.plans.length - 1) {
-            alert('You are on the highest plan');
+            showToast('You are on the highest plan already', 'info')
         } else {
             const nextPlan = this.plans[index + 1]
             console.log(nextPlan)
@@ -176,21 +192,25 @@ class PlanManager {
 
     // Downgrades to the previous available plan
     downgradePlan() {
-        // Find current plan index in plans array
-        const index = this.plans.findIndex(plan => plan.name = this.currentPlan);
-        console.log(index)
+        const index = this.plans.findIndex(plan => plan.name === this.currentPlan);
+        console.log(index);
 
-        // Check if already at lowest plan
-        if (index < 0) {
-            alert('You are already on the lowest plan');
-            console.log(this.plans)
-        } else if (this.currentPlan === 'No Plan') {
-            alert('You currently have no plans')
-        } else {
-            // Select the previous lower plan
-            const prevPlan = this.plans[index - 1];
-            this.selectPlan(prevPlan.name);
+        // Handle "No Plan" or invalid plan
+        if (this.currentPlan === "No Plan" || index === -1) {
+            showToast("You currently have no plan or an invalid plan", "info");
+            return;
         }
+
+        // Check if already at the lowest plan
+        if (index === 0) {
+            showToast("You are on the lowest plan already", "info");
+            return;
+        }
+
+        // Select the previous plan
+        const prevPlan = this.plans[index - 1];
+        console.log(prevPlan);
+        this.selectPlan(prevPlan.name);
     }
 }
 
@@ -230,7 +250,7 @@ if (authForm) {
         const password = document.getElementById("password").value;
 
         if (!email || !password) {
-            alert("Please fill out all required fields.");
+            showToast('Please fill out all required fields', 'info')
             return;
         }
 
@@ -242,7 +262,7 @@ if (authForm) {
 
 
             if (!name || !email || !phone || !password) {
-                alert("Please complete all registration fields.");
+                showToast('Please complete all registration fields', 'info')
                 return;
             }
 
@@ -322,9 +342,15 @@ const platinum = document.getElementById('platinumBtn');
 const cancel = document.getElementById('cancel');
 const downgrade = document.getElementById('download');
 const upgrade = document.getElementById('upgrade');
+const priceBasic = document.getElementById('priceBasic');
+const priceGold = document.getElementById('priceGold');
+const pricePlatinum = document.getElementById('pricePlatinum');
 
 const plan = new PlanManager();
 
+priceBasic.innerText = plan.plans.find(plan => plan.name ==='Bronze').price
+priceGold.innerText = plan.plans.find(plan => plan.name ==='Gold').price
+pricePlatinum.innerText = plan.plans.find(plan => plan.name ==='Platinum').price
 
 basic.addEventListener('click', e => {
     e.preventDefault();
@@ -357,6 +383,8 @@ upgrade.addEventListener('click', e => {
     e.preventDefault();
     plan.upgradePlan()
 })
+
+//----------------------------------------------------------------------------------------------------------------------
 
 
 

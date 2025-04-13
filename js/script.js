@@ -69,7 +69,7 @@ L.marker([lat, lng]).addTo(map)
    
    
     const sidebar = document.getElementById('sidebar');
-    const toggleBtn = document.getElementById('toggleBtn');
+    const toggleBtn = document.getElementById('toggle-Btn');
 
     toggleBtn.addEventListener('click', () => {
         sidebar.classList.toggle('expanded');

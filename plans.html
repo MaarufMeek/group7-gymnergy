@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <!-- AOS CSS -->
+    <!-- AOS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
@@ -19,7 +19,7 @@
         <div class="logo"><span>Gym</span>nergy</div>
 
         <div class="sidebar" id="sidebar">
-            <button class="toggle-btn" id="toggleBtn"><i class="fa fa-angle-left"></i></button>
+            <button class="toggle-btn" id="toggle-Btn"><i class="fa fa-angle-left"></i></button>
             <nav class="sidebar-nav">
                 <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
                 <a href="#services" title="Services"><i class="fas fa-dumbbell"></i></a>
@@ -75,7 +75,10 @@
             <li><i class="fa fa-close unchecked"></i> Personal Trainer</li>
             <li><i class="fa fa-close unchecked"></i> Diet Advisory</li>
         </ul>
-        <button id="basicBtn">Choose Bronze</button>
+        <div class="button-price">
+            <button id="basicBtn">Bronze</button>
+            <p id="priceBasic"></p>
+        </div>
     </div>
 
     <div class="plan-card" data-aos="fade-up" data-aos-duration="800">
@@ -88,7 +91,10 @@
             <li><i class="fa fa-close unchecked"></i> Personal Trainer</li>
             <li><i class="fa fa-close unchecked"></i> Diet Advisory</li>
         </ul>
-        <button id="premiumBtn">Choose Premium</button>
+        <div class="button-price">
+            <button id="premiumBtn">Gold</button>
+            <p id="priceGold"></p>
+        </div>
     </div>
 
     <div class="plan-card" data-aos="fade-left" data-aos-duration="800">
@@ -102,9 +108,17 @@
             <li><i class="fa fa-check checked"></i> Aerobics</li>
             <li><i class="fa fa-check checked"></i> Strength</li>
         </ul>
-        <button id="platinumBtn">Choose Elite</button>
+        <div class="button-price">
+            <button id="platinumBtn">Platinum</button>
+            <p id="pricePlatinum"></p>
+        </div>
+
+
     </div>
 </div>
+
+<div id="toast-container"></div>
+
 <!-- 🔗 Footer -->
 <footer class="footer">
     <div class="footer-content">
@@ -124,22 +138,20 @@
         </div>
     </div>
 </footer>
-
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
 <script>
     AOS.init();
 </script>
 
+
 <script src="js/register.js"></script>
+<script src="js/script.js"></script>
 <script>
     const cur_user = User.getCurrentUser();
-    if(!cur_user) {
+    if (!cur_user) {
         window.location.href = 'http://localhost:63342/grroup7/register.html'
     }
 </script>
-
 
 </body>
 </html>

@@ -10,8 +10,8 @@ body {
 
 :root {
     --primary-accent: #f44336;
-    --secondary-accent: #d3ba32;
-    --cool-black-accent: #282626;
+    --secondary-accent: #176534;
+    --cool-black-accent: #b0b006;
 }
 
 
@@ -73,22 +73,9 @@ h1, h2, h3 {
     width: 100%;
 }
 
-/* HAMBURGER styles */
-.hamburger {
-    display: none;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
 
 /* Mobile styles */
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
     .nav-links {
         display: none;
         flex-direction: column;
@@ -247,7 +234,7 @@ h1, h2, h3 {
     font-weight: bold;
 }
 
-.user i{
+.user i {
     font-size: 2rem;
 }
 
@@ -264,8 +251,6 @@ h1, h2, h3 {
         font-size: 1.4rem;
     }
 }
-
-
 
 
 .cta-btn {
@@ -610,7 +595,6 @@ footer {
 }
 
 
-
 .social-icons {
     margin-top: 10px;
 }
@@ -641,7 +625,6 @@ footer {
 .footer-bottom a:hover {
     color: #fff;
 }
-
 
 
 /* Responsive Design for Smaller Screens */
@@ -869,6 +852,7 @@ footer {
     color: rgba(255, 255, 255, 0.75);
     margin-bottom: 30px;
 }
+
 .current-plan {
     padding: 20px;
     margin-bottom: 20px;
@@ -916,6 +900,7 @@ footer {
     background-color: #831b18;
     color: white;
 }
+
 .cancel:hover {
     background-color: #c62828;
 }
@@ -925,6 +910,7 @@ footer {
     background-color: #886a1f;
     color: white;
 }
+
 .downgrade:hover {
     background-color: #f9a825;
 }
@@ -934,14 +920,16 @@ footer {
     background-color: var(--primary-accent);
     color: white;
 }
+
 .upgrade:hover {
     background-color: #388e3c;
 }
 
 @media screen and (max-width: 600px) {
     .plan-container h1 {
-    font-size: 3.5em;
-}
+        font-size: 3.5em;
+    }
+
     .current-plan h2 {
         font-size: 1.5rem;
         text-align: left !important;
@@ -1003,18 +991,18 @@ footer {
 
 
 .plan-card:nth-child(1) {
-  background: linear-gradient(135deg, #cd7f32, #563214);
-  color: #fff5e6;
+    background: linear-gradient(135deg, #cd7f32, #563214);
+    color: #fff5e6;
 }
 
-.plan-card:nth-child(2){
-  background: linear-gradient(135deg, #FFD700, #ad7d24);
-  color: #2c1a00;
+.plan-card:nth-child(2) {
+    background: linear-gradient(135deg, #FFD700, #ad7d24);
+    color: #2c1a00;
 }
 
 .plan-card:nth-child(3) {
-  background: linear-gradient(135deg, #e5e4e2, #757171);
-  color: #1a1a1a;
+    background: linear-gradient(135deg, #e5e4e2, #757171);
+    color: #1a1a1a;
 }
 
 
@@ -1043,15 +1031,75 @@ footer {
 }
 
 .plan-card button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: inherit;
-  transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: inherit;
+    transition: background-color 0.3s ease;
+}
+
+.button-price {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/*Toast container*/
+#toast-container {
+    position: fixed;
+    top: 20px;
+    left: 95%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast {
+    min-width: 250px;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    color: white;
+    animation: fadeInOut 3s ease-in-out forwards;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.toast.error {
+    background-color: var(--primary-accent); /* Red */
+}
+
+.toast.success {
+    background-color: var(--secondary-accent); /* Yellow */
+    color: #ffffff;
+}
+
+.toast.info {
+    background-color: var(--cool-black-accent);
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) translateX(-50%);
+    }
+    10%, 90% {
+        opacity: 1;
+        transform: translateY(0) translateX(-50%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px) translateX(-50%);
+    }
 }
 
 
