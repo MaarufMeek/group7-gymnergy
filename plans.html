@@ -40,6 +40,10 @@
 <div class="plan-container">
     <div class="plan-info" data-aos="zoom-in" data-aos-duration="1000">
         <h1>Your Gym Plan</h1>
+        <div class="user">
+            <i class="fa fa-user-circle"></i>
+            <p id="username" data-aos="fade-right" data-aos-duration="800"></p>
+        </div>
         <!-- Current Plan -->
         <div class="current-plan">
             <div class="plan-titles">
@@ -48,10 +52,9 @@
             </div>
 
             <div class="action-buttons">
-                <button class="cancel" onclick="planManager.cancelPlan()">Cancel <i class="fa fa-xmark"></i></button>
-                <button class="downgrade" onclick="planManager.downgradePlan()">Downgrade <i
-                        class="fa fa-level-down"></i></button>
-                <button class="upgrade" onclick="planManager.upgradePlan()">Upgrade <i class="fa fa-level-up"></i>
+                <button id="cancel" class="cancel">Cancel <i class="fa fa-xmark"></i></button>
+                <button id="download" class="downgrade">Downgrade <i class="fa fa-level-down"></i></button>
+                <button id="upgrade" class="upgrade">Upgrade <i class="fa fa-level-up"></i>
                 </button>
             </div>
         </div>
@@ -72,7 +75,7 @@
             <li><i class="fa fa-close unchecked"></i> Personal Trainer</li>
             <li><i class="fa fa-close unchecked"></i> Diet Advisory</li>
         </ul>
-        <button onclick="planManager.selectPlan('Basic')">Choose Basic</button>
+        <button id="basicBtn">Choose Bronze</button>
     </div>
 
     <div class="plan-card" data-aos="fade-up" data-aos-duration="800">
@@ -85,7 +88,7 @@
             <li><i class="fa fa-close unchecked"></i> Personal Trainer</li>
             <li><i class="fa fa-close unchecked"></i> Diet Advisory</li>
         </ul>
-        <button onclick="planManager.selectPlan('Premium')">Choose Premium</button>
+        <button id="premiumBtn">Choose Premium</button>
     </div>
 
     <div class="plan-card" data-aos="fade-left" data-aos-duration="800">
@@ -99,7 +102,7 @@
             <li><i class="fa fa-check checked"></i> Aerobics</li>
             <li><i class="fa fa-check checked"></i> Strength</li>
         </ul>
-        <button onclick="planManager.selectPlan('Elite')">Choose Elite</button>
+        <button id="platinumBtn">Choose Elite</button>
     </div>
 </div>
 <!-- 🔗 Footer -->
@@ -128,7 +131,15 @@
 <script>
     AOS.init();
 </script>
+
 <script src="js/register.js"></script>
+<script>
+    const cur_user = User.getCurrentUser();
+    if(!cur_user) {
+        window.location.href = 'http://localhost:63342/grroup7/register.html'
+    }
+</script>
+
 
 </body>
 </html>

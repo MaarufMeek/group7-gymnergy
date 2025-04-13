@@ -1,22 +1,22 @@
-// Class to manage user data, including registration, login, logout, and plan subscription
+// Class to manage cur_user data, including registration, login, logout, and plan subscription
 class User {
-    // Constructor initializes a user object with basic properties and optional plan
+    // Constructor initializes a cur_user object with basic properties and optional plan
     constructor(name, email, password, phone, plan = null) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.phone = phone;
-        this.isLoggedIn = false;     // Indicates if the user is currently logged in
-        this.hasRegistered = false;  // Indicates if the user has registered
-        this.plan = plan;            // Stores the user's current subscription plan (if any)
+        this.isLoggedIn = false;     // Indicates if the cur_user is currently logged in
+        this.hasRegistered = false;  // Indicates if the cur_user has registered
+        this.plan = plan;            // Stores the cur_user's current subscription plan (if any)
     }
 
-    // Retrieves the currently logged-in user from localStorage
+    // Retrieves the currently logged-in cur_user from localStorage
     static getCurrentUser() {
-        const email = localStorage.getItem("currentUser"); // Get the email of the currently logged-in user
+        const email = localStorage.getItem("currentUser"); // Get the email of the currently logged-in cur_user
         if (!email) return null;
 
-        const data = localStorage.getItem(email); // Get the full user data using email as key
+        const data = localStorage.getItem(email); // Get the full cur_user data using email as key
         if (!data) return null;
 
         const parsed = JSON.parse(data); // Parse the stored JSON data
@@ -28,49 +28,49 @@ class User {
         return user;
     }
 
-    // Checks if a user is currently logged in
+    // Checks if a cur_user is currently logged in
     static isUserLoggedIn() {
         const user = User.getCurrentUser();
         return user && user.isLoggedIn;
     }
 
-    // Saves the current user data to localStorage
+    // Saves the current cur_user data to localStorage
     saveUser() {
         localStorage.setItem(this.email, JSON.stringify(this));
     }
 
-    // Registers the user and saves their data
+    // Registers the cur_user and saves their data
     registerUser() {
         this.hasRegistered = true;
         this.saveUser();
         alert("Registration successful!");
     }
 
-    // Logs in the user by validating their credentials
+    // Logs in the cur_user by validating their credentials
     login(email, password) {
         if (this.email === email && this.password === password) {
             this.isLoggedIn = true;
             this.saveUser();
-            localStorage.setItem("currentUser", this.email); // Store the logged-in user's email
+            localStorage.setItem("currentUser", this.email); // Store the logged-in cur_user's email
             return true;
         }
         return false;
     }
 
-    // Logs out the user and updates localStorage
+    // Logs out the cur_user and updates localStorage
     logout() {
         this.isLoggedIn = false;
-        this.saveUser(); // Save the updated user state (logged out)
+        this.saveUser(); // Save the updated cur_user state (logged out)
         localStorage.removeItem("currentUser"); // Remove the session indicator
     }
 
-    // Updates the user's current plan and persists the change
+    // Updates the cur_user's current plan and persists the change
     updatePlan(newPlan) {
         this.plan = newPlan;
         this.saveUser();
     }
 
-    // Cancels the user's current plan and updates localStorage
+    // Cancels the cur_user's current plan and updates localStorage
     cancelPlan() {
         this.plan = null;
         this.saveUser();
@@ -81,7 +81,7 @@ class User {
 //----------------------------------------------------------------------------------------------------------------------
 
 // Class to manage subscription plan
-// Class to manage subscription plans and sync with the current user
+// Class to manage subscription plans and sync with the current cur_user
 class PlanManager {
     constructor() {
         // Available plans with names and prices
@@ -91,11 +91,13 @@ class PlanManager {
             {name: 'Platinum', price: 10}
         ];
 
-        // Get the currently logged-in user
+        console.log(this.plans)
+
+        // Get the currently logged-in cur_user
         this.currentUser = User.getCurrentUser();
 
-        // Set the current plan from user data or default to 'Free Plan'
-        this.currentPlan = this.currentUser?.plan || 'Free Plan';
+        // Set the current plan from cur_user data or default to 'Free Plan'
+        this.currentPlan = this.currentUser?.plan || 'No Plan';
 
         // Get reference to the DOM element that shows the plan name
         this.planElementName = document.getElementById('plan-name');
@@ -114,7 +116,7 @@ class PlanManager {
     // Handles selecting a plan
     selectPlan(planName) {
         // Check if plan name is valid (exists in available plans or is 'Free Trial')
-        if (!this.plans.name.includes(planName) && planName !== 'Free Trial') {
+        if (!this.plans.some(plan => plan.name === planName) && planName !== 'No Plan') {
             alert('Invalid plan selection');
             return;
         }
@@ -123,7 +125,7 @@ class PlanManager {
         this.currentPlan = planName;
         alert(`You have selected ${planName} plan`);
 
-        // Update plan in the user object and save it
+        // Update plan in the cur_user object and save it
         if (this.currentUser) {
             this.currentUser.updatePlan(planName);
         }
@@ -132,13 +134,18 @@ class PlanManager {
         this.updateUI();
     }
 
-    // Cancels the user's current plan
+
+    // Cancels the cur_user's current plan
     cancelPlan() {
+        if (this.currentPlan === 'No Plan') {
+            alert('You currently have no plans')
+            return;
+        }
         if (confirm('You want to cancel your current plan?')) {
             this.currentPlan = 'No Plan';
         }
 
-        // Cancel plan in user object
+        // Cancel plan in cur_user object
         if (this.currentUser) {
             this.currentUser.cancelPlan();
         }
@@ -147,29 +154,38 @@ class PlanManager {
         this.updateUI();
     }
 
+//----------------------------------------------------------------------------------------------------------------------
+
     // Upgrades to the next available plan
     upgradePlan() {
         // Find current plan index in plans array
         const index = this.plans.findIndex(plan => plan.name = this.currentPlan);
 
+
         // Check if already at highest plan or plan not found
         if (index === -1 || index === this.plans.length - 1) {
             alert('You are on the highest plan');
         } else {
-            // Select the next higher plan
-            const nextPlan = this.plans[index + 1];
-            this.selectPlan(nextPlan.name);
+            const nextPlan = this.plans[index + 2]
+            console.log(nextPlan)
+            this.selectPlan(nextPlan.name)
         }
     }
+
+//----------------------------------------------------------------------------------------------------------------------
 
     // Downgrades to the previous available plan
     downgradePlan() {
         // Find current plan index in plans array
         const index = this.plans.findIndex(plan => plan.name = this.currentPlan);
+        console.log(index)
 
         // Check if already at lowest plan
-        if(index <= 0) {
+        if (index < 0) {
             alert('You are already on the lowest plan');
+            console.log(this.plans)
+        } else if (this.currentPlan === 'No Plan') {
+            alert('You currently have no plans')
         } else {
             // Select the previous lower plan
             const prevPlan = this.plans[index - 1];
@@ -189,6 +205,8 @@ const registerFields = document.getElementById("registerFields");
 
 let isRegisterMode = false;
 
+//----------------------------------------------------------------------------------------------------------------------
+
 // Toggle between login and registration modes
 if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
@@ -197,9 +215,11 @@ if (toggleBtn) {
         registerFields.style.display = isRegisterMode ? "block" : "none";
         formTitle.textContent = isRegisterMode ? "Register" : "Login";
         submitBtn.textContent = isRegisterMode ? "Create Account" : "Log In";
-        toggleBtn.innerHTML = isRegisterMode ? "Back to Login" : "<i class=\"fa fa-user-plus\"></i> Register";
+        toggleBtn.innerHTML = isRegisterMode ? "Back to Login" : "<i class=\"fa fa-cur_user-plus\"></i> Register";
     });
 }
+
+//----------------------------------------------------------------------------------------------------------------------
 
 // Unified form submission
 if (authForm) {
@@ -237,13 +257,15 @@ if (authForm) {
             newUser.registerUser();
             authForm.reset();
             isRegisterMode = false;
-            showToast(`Hey ${name}, welcome to Gymnergy`, 'success')
+
+            // showToast(`Hey ${name}, welcome to Gymnergy`, 'success')
             toggleBtn.click();
 
         } else {
             const storedData = localStorage.getItem(email);
             if (!storedData) {
-                showToast('User not found. Please register', 'info')
+                alert('no cur_user')
+                // showToast('User not found. Please register', 'info')
                 return;
             }
 
@@ -252,17 +274,18 @@ if (authForm) {
 
             if (success) {
                 user.saveUser();
-                window.location.href = "plan.html";
+                window.location.href = "http://localhost:63342/grroup7/plans.html";
             } else {
-                showToast('Incorrect password', 'error')
+                // showToast('Incorrect password', 'error')
                 alert("Incorrect password!");
             }
         }
     });
 }
 
+//----------------------------------------------------------------------------------------------------------------------
 
-//logging out user
+//logging out cur_user
 const logoutBtn = document.getElementById("logout");
 if (logoutBtn) {
     logoutBtn.addEventListener('click', (e) => {
@@ -273,40 +296,70 @@ if (logoutBtn) {
             console.log('Logout successful');
             window.location.href = 'http://localhost:63342/grroup7/register.html';
         } else {
-            alert('no user')
-            console.warn('No user is currently logged in');
+            alert('no cur_user')
+            console.warn('No cur_user is currently logged in');
             window.location.href = 'http://localhost:63342/grroup7/register.html';
         }
     });
 }
 
+//----------------------------------------------------------------------------------------------------------------------
 
-function showToast(message, type = "info") {
-    const toastElement = document.getElementById("toast");
-    const toastBody = toastElement.querySelector(".toast-body");
-
-    toastBody.textContent = message;
-
-    // Set the toast color based on alert type
-    const toastHeader = toastElement.querySelector(".toast-header");
-    if (type === "success") {
-        toastHeader.classList.add("bg-success");
-        toastHeader.classList.remove("bg-danger", "bg-warning");
-    } else if (type === "error") {
-        toastHeader.classList.add("bg-danger");
-        toastHeader.classList.remove("bg-success", "bg-warning");
-    } else {
-        toastHeader.classList.add("bg-warning");
-        toastHeader.classList.remove("bg-danger", "bg-success");
-    }
-
-    // Show the toast using Bootstrap's Toast API
-    const toast = new Toast(toastElement, {
-        delay: 2000,
-    });
-    toast.show();
+// Set cur_user name on the plans page
+const user = User.getCurrentUser();
+const username = document.getElementById('username');
+if (user) {
+    username.textContent = user.name;
+} else {
+    username.textContent = 'Guest'
 }
-    
+
+//----------------------------------------------------------------------------------------------------------------------
+//selecting and displaying plans
+const basic = document.getElementById('basicBtn');
+const gold = document.getElementById('premiumBtn');
+const platinum = document.getElementById('platinumBtn');
+const cancel = document.getElementById('cancel');
+const downgrade = document.getElementById('download');
+const upgrade = document.getElementById('upgrade');
+
+const plan = new PlanManager();
+
+
+basic.addEventListener('click', e => {
+    e.preventDefault();
+    plan.selectPlan('Bronze')
+})
+
+gold.addEventListener('click', e => {
+    e.preventDefault();
+    plan.selectPlan('Gold')
+})
+
+platinum.addEventListener('click', e => {
+    e.preventDefault();
+    plan.selectPlan('Platinum')
+})
+
+cancel.addEventListener('click', e => {
+    e.preventDefault();
+    plan.cancelPlan();
+})
+
+
+downgrade.addEventListener('click', e => {
+    e.preventDefault();
+    plan.downgradePlan();
+})
+
+
+upgrade.addEventListener('click', e => {
+    e.preventDefault();
+    plan.upgradePlan()
+})
+
+
+
 
 
 
