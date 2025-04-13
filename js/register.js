@@ -96,7 +96,7 @@ class PlanManager {
         // Get the currently logged-in cur_user
         this.currentUser = User.getCurrentUser();
 
-        // Set the current plan from cur_user data or default to 'Free Plan'
+        // Set the current plan from cur_user data or default to No Plan
         this.currentPlan = this.currentUser?.plan || 'No Plan';
 
         // Get reference to the DOM element that shows the plan name
@@ -115,7 +115,7 @@ class PlanManager {
 
     // Handles selecting a plan
     selectPlan(planName) {
-        // Check if plan name is valid (exists in available plans or is 'Free Trial')
+        // Check if plan name is valid or is No Plan
         if (!this.plans.some(plan => plan.name === planName) && planName !== 'No Plan') {
             alert('Invalid plan selection');
             return;
@@ -159,14 +159,14 @@ class PlanManager {
     // Upgrades to the next available plan
     upgradePlan() {
         // Find current plan index in plans array
-        const index = this.plans.findIndex(plan => plan.name = this.currentPlan);
+        const index = this.plans.findIndex(plan => plan.name === this.currentPlan);
 
 
         // Check if already at highest plan or plan not found
         if (index === -1 || index === this.plans.length - 1) {
             alert('You are on the highest plan');
         } else {
-            const nextPlan = this.plans[index + 2]
+            const nextPlan = this.plans[index + 1]
             console.log(nextPlan)
             this.selectPlan(nextPlan.name)
         }
