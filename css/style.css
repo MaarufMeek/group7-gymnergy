@@ -845,7 +845,7 @@ footer {
 }
 .current-plan {
     padding: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 /* Align heading to left */
@@ -858,9 +858,10 @@ footer {
 
 /* Plan text styling */
 .current-plan p {
+    margin-top: 0;
+    margin-bottom: 40px;
     font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: white;
+    color: var(--primary-accent);
     font-weight: bold;
 }
 
@@ -945,6 +946,11 @@ footer {
         font-size: 0.6rem;
         padding: 10px 3px;
     }
+}
+
+.plan-header {
+    text-align: center;
+    font-size: 3rem;
 }
 
 .plans-grid {

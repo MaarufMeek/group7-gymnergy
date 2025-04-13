@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -36,7 +38,7 @@
 </header>
 
 <div class="plan-container">
-    <div class="plan-info">
+    <div class="plan-info" data-aos="zoom-in" data-aos-duration="1000">
         <h1>Your Gym Plan</h1>
         <!-- Current Plan -->
         <div class="current-plan">
@@ -57,10 +59,10 @@
 
 </div>
 
-
+<h2 class="plan-header">Select Plans</h2>
 <!-- Plan Cards -->
 <div class="plans-grid">
-    <div class="plan-card">
+    <div class="plan-card" data-aos="fade-right" data-aos-duration="800">
         <h3>Basic</h3>
         <p>Great for beginners.</p>
         <ul>
@@ -73,7 +75,7 @@
         <button onclick="planManager.selectPlan('Basic')">Choose Basic</button>
     </div>
 
-    <div class="plan-card">
+    <div class="plan-card" data-aos="fade-up" data-aos-duration="800">
         <h3>Premium</h3>
         <p>Ideal for regular fitness lovers.</p>
         <ul>
@@ -86,7 +88,7 @@
         <button onclick="planManager.selectPlan('Premium')">Choose Premium</button>
     </div>
 
-    <div class="plan-card">
+    <div class="plan-card" data-aos="fade-left" data-aos-duration="800">
         <h3>Elite</h3>
         <p>All-inclusive fitness experience.</p>
         <ul>
@@ -119,46 +121,14 @@
         </div>
     </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script>
-    class PlanManager {
-        constructor() {
-            this.currentPlan = "Free Trial";
-            this.planNameElement = document.getElementById("plan-name");
-        }
-
-        updateUI() {
-            this.planNameElement.textContent = this.currentPlan;
-        }
-
-        selectPlan(planName) {
-            this.currentPlan = planName;
-            alert(`You have selected the ${planName} plan.`);
-            this.updateUI();
-        }
-
-        cancelPlan() {
-            if (confirm("Cancel your current plan?")) {
-                this.currentPlan = "No Plan";
-                this.updateUI();
-            }
-        }
-
-        upgradePlan() {
-            if (this.currentPlan === "Basic") this.selectPlan("Premium");
-            else if (this.currentPlan === "Premium") this.selectPlan("Elite");
-            else alert("You're on the highest plan.");
-        }
-
-        downgradePlan() {
-            if (this.currentPlan === "Elite") this.selectPlan("Premium");
-            else if (this.currentPlan === "Premium") this.selectPlan("Basic");
-            else alert("You're already on the lowest plan.");
-        }
-    }
-
-    const planManager = new PlanManager();
-    planManager.updateUI();
+    AOS.init();
 </script>
+<script src="js/register.js"></script>
 
 </body>
 </html>
