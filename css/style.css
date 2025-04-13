@@ -8,6 +8,13 @@ body {
     scroll-behavior: smooth;
 }
 
+:root {
+    --primary-accent: #f44336;
+    --secondary-accent: #d3ba32;
+    --cool-black-accent: #282626;
+}
+
+
 h1, h2, h3 {
     font-family: 'Bebas Neue', sans-serif;
     margin: 0;
@@ -695,14 +702,15 @@ footer {
 
 .auth-form {
     background: rgba(0, 0, 0, 0.85);
-    padding: 2rem 3rem;
+    padding: 0.7rem 3rem;
     border-radius: 10px;
     max-width: 400px;
     opacity: 0.7;
     width: 100%;
-    border-top: 4px  solid #b29f36;
+    border-top: 4px solid #b29f36;
 
 }
+
 
 .auth-form h2 {
     font-family: 'Barlow Condensed', sans-serif;
@@ -716,6 +724,7 @@ footer {
 .input-container {
     position: relative;
     width: 100%;
+
 }
 
 .input-container input, select {
@@ -724,7 +733,7 @@ footer {
     margin: 20px 5px;
     font-size: 1rem;
     font-family: "Barlow Condensed", sans-serif;
-    border: 2px solid darkgoldenrod;
+    border: 2px solid #9b8a2d;
     border-radius: 5px;
     outline: none;
     transition: border-color 0.3s;
@@ -744,7 +753,7 @@ footer {
 }
 
 .input-container input:focus {
-    border-color: #9b8a2d;
+    border-color: #ff4444;
 }
 
 .input-container input:focus + label,
@@ -796,6 +805,7 @@ footer {
 .butt_con p a:hover {
     color: #d3ba32;
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 
@@ -806,3 +816,210 @@ footer {
 .hidden {
     display: none;
 }
+
+
+/*Plan*/
+.plan-container {
+    max-width: 100%;
+    padding: 20px;
+    background-image: url("../images/hero.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 40px;
+}
+
+.checked {
+    color: #0b690b;
+}
+
+.unchecked {
+    color: #a21b11;
+}
+
+.plan-container h1 {
+    text-align: center;
+    font-size: 5.5em;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 30px;
+}
+.current-plan {
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+/* Align heading to left */
+.current-plan h2 {
+    margin-top: 0;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 2rem;
+    text-align: left;
+}
+
+/* Plan text styling */
+.current-plan p {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Action buttons layout */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Style buttons */
+.action-buttons button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    min-width: 40px;
+}
+
+/* Cancel */
+.cancel {
+    background-color: #831b18;
+    color: white;
+}
+.cancel:hover {
+    background-color: #c62828;
+}
+
+/* Downgrade */
+.downgrade {
+    background-color: #886a1f;
+    color: white;
+}
+.downgrade:hover {
+    background-color: #f9a825;
+}
+
+/* Upgrade */
+.upgrade {
+    background-color: var(--primary-accent);
+    color: white;
+}
+.upgrade:hover {
+    background-color: #388e3c;
+}
+
+@media screen and (max-width: 600px) {
+    .plan-container h1 {
+    font-size: 3.5em;
+}
+    .current-plan h2 {
+        font-size: 1.5rem;
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    .current-plan .plan-titles {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        /*justify-content: start;*/
+    }
+
+    .current-plan p {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .action-buttons {
+        display: block;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+    }
+
+    .action-buttons button {
+        width: 75px;
+        font-size: 0.6rem;
+        padding: 10px 3px;
+    }
+}
+
+.plans-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
+}
+
+.plan-card {
+    padding: 20px;
+    width: 200px;
+    border-radius: 12px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 2px rgba(40, 38, 38, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+
+.plan-card:nth-child(1) {
+  background: linear-gradient(135deg, #cd7f32, #563214);
+  color: #fff5e6;
+}
+
+.plan-card:nth-child(2){
+  background: linear-gradient(135deg, #FFD700, #ad7d24);
+  color: #2c1a00;
+}
+
+.plan-card:nth-child(3) {
+  background: linear-gradient(135deg, #e5e4e2, #757171);
+  color: #1a1a1a;
+}
+
+
+.plan-card h3 {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.plan-card p {
+    font-weight: bold;
+    font-size: 0.95em;
+    color: #0e0202;
+    margin-bottom: 15px;
+}
+
+.plan-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.plan-card ul li {
+    margin-bottom: 6px;
+}
+
+.plan-card button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: inherit;
+  transition: background-color 0.3s ease;
+}
+
+

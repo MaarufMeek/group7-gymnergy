@@ -1,10 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gym Subscription Plans</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <h1>Still under design</h1>
+
+<!-- 🧭 Navigation -->
+<header>
+    <nav class="navbar">
+        <div class="logo"><span>Gym</span>nergy</div>
+
+        <div class="sidebar" id="sidebar">
+            <button class="toggle-btn" id="toggleBtn"><i class="fa fa-angle-left"></i></button>
+            <nav class="sidebar-nav">
+                <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
+                <a href="#services" title="Services"><i class="fas fa-dumbbell"></i></a>
+                <a href="plans.html" title="Plans"><i class="fas fa-clipboard-list"></i></a>
+                <a href="register.html" title="Login/Register"><i class="fas fa-user-plus"></i></a>
+            </nav>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="plans.html">Plans</a></li>
+            <li><a href="register.html">Register/Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="plan-container">
+    <div class="plan-info">
+        <h1>Your Gym Plan</h1>
+        <!-- Current Plan -->
+        <div class="current-plan">
+            <div class="plan-titles">
+                <h2>Current Plan:</h2>
+                <p id="plan-name">Free Trial</p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="cancel" onclick="planManager.cancelPlan()">Cancel <i class="fa fa-xmark"></i></button>
+                <button class="downgrade" onclick="planManager.downgradePlan()">Downgrade <i
+                        class="fa fa-level-down"></i></button>
+                <button class="upgrade" onclick="planManager.upgradePlan()">Upgrade <i class="fa fa-level-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Plan Cards -->
+<div class="plans-grid">
+    <div class="plan-card">
+        <h3>Basic</h3>
+        <p>Great for beginners.</p>
+        <ul>
+            <li><i class="fa fa-check checked"></i> Access to Gym Equipment</li>
+            <li><i class="fa fa-check checked"></i> Strength Training</li>
+            <li><i class="fa fa-close unchecked"></i> Yoga Classes</li>
+            <li><i class="fa fa-close unchecked"></i> Personal Trainer</li>
+            <li><i class="fa fa-close unchecked"></i> Diet Advisory</li>
+        </ul>
+        <button onclick="planManager.selectPlan('Basic')">Choose Basic</button>
+    </div>
+
+    <div class="plan-card">
+        <h3>Premium</h3>
+        <p>Ideal for regular fitness lovers.</p>
+        <ul>
+            <li><i class="fa fa-check checked"></i> Gym Equipment + Strength</li>
+            <li><i class="fa fa-check checked"></i> Yoga Classes</li>
+            <li><i class="fa fa-check checked"></i> Aerobics</li>
+            <li><i class="fa fa-close unchecked"></i> Personal Trainer</li>
+            <li><i class="fa fa-close unchecked"></i> Diet Advisory</li>
+        </ul>
+        <button onclick="planManager.selectPlan('Premium')">Choose Premium</button>
+    </div>
+
+    <div class="plan-card">
+        <h3>Elite</h3>
+        <p>All-inclusive fitness experience.</p>
+        <ul>
+            <li><i class="fa fa-check checked"></i> All Gym Services</li>
+            <li><i class="fa fa-check checked"></i> Personal Trainer</li>
+            <li><i class="fa fa-check checked"></i> Diet Advisory</li>
+            <li><i class="fa fa-check checked"></i> Yoga</li>
+            <li><i class="fa fa-check checked"></i> Aerobics</li>
+            <li><i class="fa fa-check checked"></i> Strength</li>
+        </ul>
+        <button onclick="planManager.selectPlan('Elite')">Choose Elite</button>
+    </div>
+</div>
+<!-- 🔗 Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section contact">
+            <p>Contact Us</p>
+            <p>Email: meek@admin.com</p>
+            <p>Phone: +123 456 7890</p>
+        </div>
+
+        <div class="footer-section social">
+            <div class="social-icons">
+                <a href="#" class="social-icon facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    class PlanManager {
+        constructor() {
+            this.currentPlan = "Free Trial";
+            this.planNameElement = document.getElementById("plan-name");
+        }
+
+        updateUI() {
+            this.planNameElement.textContent = this.currentPlan;
+        }
+
+        selectPlan(planName) {
+            this.currentPlan = planName;
+            alert(`You have selected the ${planName} plan.`);
+            this.updateUI();
+        }
+
+        cancelPlan() {
+            if (confirm("Cancel your current plan?")) {
+                this.currentPlan = "No Plan";
+                this.updateUI();
+            }
+        }
+
+        upgradePlan() {
+            if (this.currentPlan === "Basic") this.selectPlan("Premium");
+            else if (this.currentPlan === "Premium") this.selectPlan("Elite");
+            else alert("You're on the highest plan.");
+        }
+
+        downgradePlan() {
+            if (this.currentPlan === "Elite") this.selectPlan("Premium");
+            else if (this.currentPlan === "Premium") this.selectPlan("Basic");
+            else alert("You're already on the lowest plan.");
+        }
+    }
+
+    const planManager = new PlanManager();
+    planManager.updateUI();
+</script>
+
 </body>
 </html>

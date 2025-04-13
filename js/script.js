@@ -14,6 +14,8 @@ const counterSection = document.querySelector('.counter-section');
 const counterElement = document.getElementById('session-counter');
 let hasCounted = false;
 
+if(counterElement) {
+
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !hasCounted) {
@@ -27,6 +29,8 @@ const observer = new IntersectionObserver((entries, observer) => {
 });
 
 observer.observe(counterSection);
+
+}
 
 
 //map section

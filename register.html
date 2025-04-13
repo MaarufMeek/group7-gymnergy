@@ -39,38 +39,53 @@
 <section class="auth-container">
     <form id="authForm" class="auth-form">
         <h2 id="formTitle">Login</h2>
-        <div class="input-container">
-            <input type="email" id="email" placeholder="" required>
-            <label for="email">Email</label>
-        </div>
-
-        <div class="input-container">
-            <input type="password" id="password" placeholder="" required>
-            <label for="password">Password</label>
-        </div>
-
-
-        <div id="registerFields" class="hidden">
+        <div class="form-fields">
             <div class="input-container">
-                <input type="text" id="name" placeholder=""/>
-                <label for="name">Fullname</label>
+                <input type="email" id="email" placeholder="" required>
+                <label for="email">Email</label>
             </div>
+
             <div class="input-container">
-                <input type="text" id="phone" placeholder=""/>
-                <label for="phone">Phone</label>
+                <input type="password" id="password" placeholder="" required>
+                <label for="password">Password</label>
             </div>
+
+
+            <div id="registerFields" class="hidden">
+                <div class="input-container">
+                    <input type="text" id="name" placeholder=""/>
+                    <label for="name">Fullname</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="phone" placeholder=""/>
+                    <label for="phone">Phone</label>
+                </div>
+            </div>
+            <div class="butt_con">
+                <button type="submit" id="submitBtn">Log In</button>
+                <p>
+                    <a id="toggle">
+                        <i class="fa fa-user-plus"></i> Register
+                    </a>
+                </p>
+            </div>
+
         </div>
-        <div class="butt_con">
-            <button type="submit" id="submitBtn">Log In</button>
-            <p>
-                <a id="toggle">
-                    <i class="fa fa-user-plus"></i> Register
-                </a>
-            </p>
-        </div>
+
     </form>
 </section>
-<script src="js/register.js"></script>
+
+<div class="toast-container position-fixed top-0 end-0 p-3 hidden">
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto text-white">Alert</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+        </div>
+        <div class="toast-body"></div>
+    </div>
+</div>
+<script type="module" src="js/register.js"></script>
 <script src="js/script.js"></script>
 
 </body>
