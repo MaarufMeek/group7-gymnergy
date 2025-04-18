@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Inspiration | Gymnergy</title>
 
-    <link rel="stylesheet" href="css/motivation.css"/>
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/motivation.css"/>
      <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
           rel="stylesheet">
 
@@ -237,17 +237,17 @@
     });
 </script>
 
-<script>
-     const sidebar = document.getElementById('sidebar');
-    const toggle = document.getElementById('toggle-Btn');
-
-    toggle.addEventListener('click', () => {
-        sidebar.classList.toggle('expanded');
-        toggle.innerHTML = sidebar.classList.contains('expanded') ?
-            '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
-    });
-</script>
 <script src="js/motivation.js"></script>
+<script>
+const sidebar = document.getElementById('sidebar');
+const toggle = document.getElementById('toggle-Btn');
+
+toggle.addEventListener('click', () => {
+sidebar.classList.toggle('expanded');
+toggle.innerHTML = sidebar.classList.contains('expanded') ?
+'<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
+});
+</script>
 
 </body>
 </html>
