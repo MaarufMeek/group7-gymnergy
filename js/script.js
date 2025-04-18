@@ -69,11 +69,11 @@ L.marker([lat, lng]).addTo(map)
    
    
     const sidebar = document.getElementById('sidebar');
-    const toggleBtn = document.getElementById('toggle-Btn');
+    const toggle = document.getElementById('toggle-Btn');
 
-    toggleBtn.addEventListener('click', () => {
+    toggle.addEventListener('click', () => {
         sidebar.classList.toggle('expanded');
-        toggleBtn.innerHTML = sidebar.classList.contains('expanded') ?
+        toggle.innerHTML = sidebar.classList.contains('expanded') ?
             '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
     });
 

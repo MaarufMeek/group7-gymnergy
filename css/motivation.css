@@ -1,0 +1,336 @@
+/* === MOTIVATION PAGE === */
+
+body {
+    background-color: #0e0e0e;
+    color: #ffffff;
+    font-family: 'Abel', sans-serif;
+  }
+  
+  section {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Bebas Neue', cursive;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .hero-banner {
+    background: url('../images/inspiration-bg.jpg') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero-banner h1 {
+    font-size: 4rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px 40px;
+    border-radius: 10px;
+  }
+
+  
+
+
+  /* === TRANSFORMATION STORIES (Side-by-Side) === */
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #ff4500;
+  }
+
+.transform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    padding: 0 20px;
+  }
+  
+  .transform-card.side-by-side {
+    background: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.2);
+    padding: 20px;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .transform-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .img-pair {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .img-pair img {
+    width: 50%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .caption {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1rem;
+    color: #ccc;
+    background: #111;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Responsive tweak for smaller screens */
+  @media (max-width: 600px) {
+
+    /* === QUOTE CAROUSEL === */
+    .quote-carousel {
+      background: #0d0d0d;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .quote-card {
+      min-width: 100%;
+      padding: 30px;
+      box-sizing: border-box;
+      background: #1a1a1a;
+      color: #f0f0f0;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
+    }
+
+    .quote-card p {
+      font-size: 1.4rem;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .quote-card span {
+      font-size: 1rem;
+      color: #ff5733;
+    }
+
+    .carousel-nav {
+      margin-top: 25px;
+    }
+
+    .carousel-nav button {
+      background: #ff5733;
+      border: none;
+      padding: 10px 16px;
+      margin: 0 10px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .carousel-nav button:hover {
+      background: #e64900;
+    }
+
+
+    /* === EMBEDDED VIDEO SECTION === */
+    .video-section {
+      background: #0f0f0f;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .video-section h2 {
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .main-video {
+      max-width: 900px;
+      margin: 0 auto 50px;
+      position: relative;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    }
+
+    .main-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(255, 87, 34, 0.2);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .video-box {
+      position: relative;
+      padding-top: 56.25%;
+      background: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 87, 34, 0.1);
+    }
+
+    .video-box iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .video-box p {
+      margin-top: 12px;
+      color: #f0f0f0;
+      font-size: 0.95rem;
+    }
+
+
+    /* === PROGRESS TRACKER === */
+    .progress-tracker {
+      background: #121212;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .progress-tracker h2 {
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+
+    .progress-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      gap: 30px;
+    }
+
+    .progress-item {
+      text-align: left;
+      position: relative;
+    }
+
+    .progress-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #ff5722;
+    }
+
+    .progress-bar {
+      background: #333;
+      border-radius: 10px;
+      height: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      background: linear-gradient(to right, #ff5722, #ff8a50);
+      height: 100%;
+      width: 0;
+      animation: fillBar 2s ease forwards;
+    }
+
+    @keyframes fillBar {
+      0% {
+        width: 0;
+      }
+    }
+
+    .progress-percent {
+      position: absolute;
+      right: 10px;
+      top: 2px;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+
+    /* === INSPIRATION CTA === */
+    .inspo-cta {
+      background: linear-gradient(to right, #ff512f, #dd2476);
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+      clip-path: polygon(0 0, 100% 10%, 100% 100%, 0% 100%);
+    }
+
+    .inspo-cta .cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .inspo-cta h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .inspo-cta p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      font-family: 'Abel', sans-serif;
+    }
+
+    .inspo-cta .cta-button {
+      background: #fff;
+      color: #dd2476;
+      padding: 15px 35px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.3s ease, color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .inspo-cta .cta-button:hover {
+      background: #000;
+      color: #fff;
+    }
+  }
+  

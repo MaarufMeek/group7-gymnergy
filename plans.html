@@ -18,21 +18,25 @@
     <nav class="navbar">
         <div class="logo"><span>Gym</span>nergy</div>
 
+        <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
             <button class="toggle-btn" id="toggle-Btn"><i class="fa fa-angle-left"></i></button>
             <nav class="sidebar-nav">
-                <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
-                <a href="#services" title="Services"><i class="fas fa-dumbbell"></i></a>
-                <a href="plans.html" title="Plans"><i class="fas fa-clipboard-list"></i></a>
+                <a href="#" title="Home"><i class="fa fa-home"></i></a>
+                <a href="index.html#services" title="Services"><i class="fas fa-dumbbell"></i></a>
                 <a href="register.html" title="Login/Register"><i class="fas fa-user-plus"></i></a>
+                <a href="plans.html" title="Plans"><i class="fas fa-clipboard-list"></i></a>
+                <a href="motivation.html" title="Motivation"><i class="fas fa-lightbulb"></i></a>
             </nav>
         </div>
 
+        <!-- Make sure this has an ID -->
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="plans.html">Plans</a></li>
-            <li><a href="register.html">Register/Login</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="plans.html" id="plans">Plans</a></li>
+            <li><a href="motivation.html" id="motivation">Motivation</a></li>
+            <li><a href="register.html">Login/Register</a></li>
         </ul>
     </nav>
 </header>
@@ -48,7 +52,7 @@
         <div class="current-plan">
             <div class="plan-titles">
                 <h2>Current Plan:</h2>
-                <p id="plan-name">Free Trial</p>
+                <p id="plan-name"></p>
             </div>
 
             <div class="action-buttons">
@@ -66,7 +70,7 @@
 <!-- Plan Cards -->
 <div class="plans-grid">
     <div class="plan-card" data-aos="fade-right" data-aos-duration="800">
-        <h3>Basic</h3>
+        <h3>BRONZE</h3>
         <p>Great for beginners.</p>
         <ul>
             <li><i class="fa fa-check checked"></i> Access to Gym Equipment</li>
@@ -76,13 +80,13 @@
             <li><i class="fa fa-close unchecked"></i> Diet Advisory</li>
         </ul>
         <div class="button-price">
-            <button id="basicBtn">Bronze</button>
+            <button id="basicBtn">Select</button>
             <p id="priceBasic"></p>
         </div>
     </div>
 
     <div class="plan-card" data-aos="fade-up" data-aos-duration="800">
-        <h3>Premium</h3>
+        <h3>GOLD</h3>
         <p>Ideal for regular fitness lovers.</p>
         <ul>
             <li><i class="fa fa-check checked"></i> Gym Equipment + Strength</li>
@@ -92,13 +96,13 @@
             <li><i class="fa fa-close unchecked"></i> Diet Advisory</li>
         </ul>
         <div class="button-price">
-            <button id="premiumBtn">Gold</button>
+            <button id="premiumBtn">Select</button>
             <p id="priceGold"></p>
         </div>
     </div>
 
     <div class="plan-card" data-aos="fade-left" data-aos-duration="800">
-        <h3>Elite</h3>
+        <h3>PLATINUM</h3>
         <p>All-inclusive fitness experience.</p>
         <ul>
             <li><i class="fa fa-check checked"></i> All Gym Services</li>
@@ -109,7 +113,7 @@
             <li><i class="fa fa-check checked"></i> Strength</li>
         </ul>
         <div class="button-price">
-            <button id="platinumBtn">Platinum</button>
+            <button class="plan" id="platinumBtn">Select</button>
             <p id="pricePlatinum"></p>
         </div>
 
@@ -142,15 +146,24 @@
 <script>
     AOS.init();
 </script>
-
-
 <script src="js/register.js"></script>
-<script src="js/script.js"></script>
+<script>
+     const sidebar = document.getElementById('sidebar');
+    const toggle = document.getElementById('toggle-Btn');
+
+    toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('expanded');
+        toggle.innerHTML = sidebar.classList.contains('expanded') ?
+            '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
+    });
+</script>
 <script>
     const cur_user = User.getCurrentUser();
     if (!cur_user) {
-        window.location.href = 'http://localhost:63342/grroup7/register.html'
+        window.location.href = 'register.html'
     }
+
+
 </script>
 
 </body>

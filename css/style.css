@@ -1,4 +1,9 @@
-/* --- Google Fonts --- */
+:root {
+    --primary-accent: #f44336;
+    --secondary-accent: #176534;
+    --cool-black-accent: #b0b006;
+}
+
 body {
     font-family: 'Barlow Condensed', sans-serif;
     font-weight: lighter;
@@ -8,19 +13,11 @@ body {
     scroll-behavior: smooth;
 }
 
-:root {
-    --primary-accent: #f44336;
-    --secondary-accent: #176534;
-    --cool-black-accent: #b0b006;
-}
-
-
 h1, h2, h3 {
     font-family: 'Bebas Neue', sans-serif;
     margin: 0;
 }
 
-/* --- Navigation --- */
 .navbar {
     font-family: 'Bebas Neue', sans-serif;
     display: flex;
@@ -50,9 +47,6 @@ h1, h2, h3 {
     color: white;
     text-decoration: none;
     font-size: 20px;
-}
-
-.nav-links li a {
     position: relative;
     padding-bottom: 1px;
     cursor: pointer;
@@ -69,13 +63,12 @@ h1, h2, h3 {
     transition: all 0.3s ease-in-out;
 }
 
-.nav-links li a:hover::after {
+.nav-links li a:hover::after,
+.nav-links li a:active::after {
     width: 100%;
 }
 
-
-/* Mobile styles */
-@media (max-width: 768px) {
+@media (max-width: 780px) {
     .nav-links {
         display: none;
         flex-direction: column;
@@ -99,55 +92,53 @@ h1, h2, h3 {
     }
 }
 
-/* Sidebar Styles */
 .sidebar {
     position: fixed;
     top: 0;
     right: 0;
-    height: 300px;
+    height: 310px;
     width: 30px;
     background-color: #111;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 1rem;
-    transition: width 0.3s ease;
-    z-index: 999;
+    transition: width 0.3s ease, padding 0.3s ease;
+    z-index: 2111;
     overflow-x: hidden;
 }
 
-/* Toggle Button */
 .toggle-btn {
     background: none;
     border: none;
     color: white;
     font-size: 1.2rem;
-    margin: 1rem 0;
+    margin: 0.4rem 0 0 0;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
-/* Nav Icons */
 .sidebar-nav {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .sidebar-nav a {
     color: white;
     font-size: 1.5rem;
+    display: flex;
+    align-items: start;
+    gap: 12px;
     text-decoration: none;
-    text-align: center;
     transition: transform 0.3s;
 }
 
-/* Expanded state */
+
 .sidebar.expanded {
     font-family: 'Barlow Condensed', sans-serif;
     width: 150px;
-    height: 300px;
     display: flex;
     align-items: start;
     padding: 10px;
@@ -169,19 +160,17 @@ h1, h2, h3 {
 .sidebar i {
     color: rgba(244, 67, 54, 0.74);
     font-size: 1.1rem;
-    background: linear-gradient(45deg, #f65252, #f5d4d4); /* Your accent gradient */
+    background: linear-gradient(45deg, #f65252, #f5d4d4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 @media (min-width: 768px) {
     .sidebar {
-        display: none; /* Or change to a desktop-style menu */
+        display: none;
     }
 }
 
-
-/* --- Hero Section --- */
 .hero {
     position: relative;
     height: 90vh;
@@ -213,7 +202,6 @@ h1, h2, h3 {
     font-size: 7rem;
     margin-bottom: 1rem;
     color: rgba(255, 255, 255, 0.82);
-
 }
 
 .hero-content p {
@@ -252,7 +240,6 @@ h1, h2, h3 {
     }
 }
 
-
 .cta-btn {
     display: inline-block;
     background-color: #f44336;
@@ -264,6 +251,33 @@ h1, h2, h3 {
     margin-top: 1rem;
     font-weight: 500;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    will-change: background-color, color, transform;
+    position: relative;
+}
+
+.cta-btn:before,
+.cta-btn:after {
+    content: "";
+    position: absolute;
+    background-color: #9b8a2d;
+    height: 1px;
+    width: 170px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 5px;
+}
+
+.cta-btn:before {
+    left: -180px;
+}
+
+.cta-btn:after {
+    right: -180px;
+}
+
+.cta-btn:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
 }
 
 .cta-btn:hover {
@@ -272,8 +286,6 @@ h1, h2, h3 {
     transform: scale(1.05);
 }
 
-
-/* --- Footer --- */
 footer {
     background: #111;
     color: white;
@@ -283,8 +295,6 @@ footer {
     margin-top: 3rem;
 }
 
-
-/* --- Services Section --- */
 .services {
     padding: 4rem 2rem;
     background-color: #f5f5f5;
@@ -304,7 +314,6 @@ footer {
     gap: 7rem;
     padding: 0 2rem;
 }
-
 
 .service-card {
     position: relative;
@@ -335,7 +344,6 @@ footer {
     text-align: center;
 }
 
-
 .service-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
@@ -363,7 +371,7 @@ footer {
     right: 0;
     width: 60%;
     height: 100%;
-    background: rgba(255, 99, 71, 0.7); /* change to match your accent */
+    background: rgba(255, 99, 71, 0.7);
     clip-path: polygon(100% 0, 100% 100%, 25% 100%, 100% -100%);
     z-index: 100;
     display: flex;
@@ -376,9 +384,8 @@ footer {
 
 .service-card:hover .slant-overlay {
     clip-path: polygon(100% 0, 100% 100%, 30% 100%, 100% -110%);
-    background: rgba(255, 99, 71, 0.9); /* Slightly more opaque on hover */
+    background: rgba(255, 99, 71, 0.9);
 }
-
 
 .slant-overlay .overlay-txt {
     display: flex;
@@ -389,7 +396,6 @@ footer {
     text-align: right;
 }
 
-
 .slant-overlay .overlay-txt p {
     color: #130a0a;
     font-size: 1.5rem;
@@ -398,28 +404,26 @@ footer {
     margin: 0;
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    background-color: rgba(241, 193, 193, 0.11); /* Optional for contrast */
+    background-color: rgba(241, 193, 193, 0.11);
 }
-
 
 .service-card::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* overlay */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
     transition: background 0.4s ease;
 }
 
 .service-card:hover::before {
-    background: rgba(0, 0, 0, 0); /* remove overlay on hover */
+    background: rgba(0, 0, 0, 0);
 }
 
 .service-card:hover .service-icon img {
     transform: scale(1.1);
 }
-
 
 .service-card h3,
 .service-card p {
@@ -452,7 +456,6 @@ footer {
     color: #f44336;
 }
 
-/* map section */
 .map-section {
     padding: 2rem;
     background-color: #f9f9f9;
@@ -477,10 +480,9 @@ footer {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive adjustment for mobile screens */
 @media (max-width: 600px) {
     #map {
-        height: 300px; /* or any value that works better for your layout */
+        height: 300px;
     }
 
     .map-section h2 {
@@ -488,31 +490,32 @@ footer {
     }
 }
 
-
 .cta-section {
     background: linear-gradient(135deg, #080b13, #1a2434);
     color: #f44336;
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     position: relative;
     overflow: hidden;
+    height: 300px;
+    box-sizing: border-box;
 }
-
 
 .cta-content {
     max-width: 700px;
+    height: 100%;
     margin: 0 auto;
     animation: slideUpFadeIn 1.2s ease-in-out;
 }
 
 .cta-section h2 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
 .cta-section p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
     color: white;
     font-weight: lighter;
@@ -535,7 +538,6 @@ footer {
     transform: scale(1.05);
 }
 
-/* Animation */
 @keyframes slideUpFadeIn {
     0% {
         transform: translateY(40px);
@@ -546,7 +548,6 @@ footer {
         opacity: 1;
     }
 }
-
 
 .footer {
     background: #111;
@@ -594,7 +595,6 @@ footer {
     color: #fff;
 }
 
-
 .social-icons {
     margin-top: 10px;
 }
@@ -626,9 +626,8 @@ footer {
     color: #fff;
 }
 
-
-/* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
+
     .services-container {
         grid-template-columns: 1fr 1fr;
     }
@@ -644,7 +643,6 @@ footer {
     }
 }
 
-/* === Mobile Adjustments for Services (Bottom Overlay) === */
 @media (max-width: 480px) {
     .services-container {
         grid-template-columns: 1fr;
@@ -698,7 +696,6 @@ footer {
     }
 }
 
-
 .auth-container {
     display: flex;
     justify-content: center;
@@ -706,7 +703,6 @@ footer {
     height: 100vh;
     background: url('../images/strengh.jpg') center/cover no-repeat;
     margin-left: 4px;
-    /*padding: 1rem;*/
 }
 
 .auth-form {
@@ -717,23 +713,19 @@ footer {
     opacity: 0.7;
     width: 100%;
     border-top: 4px solid #b29f36;
-
 }
-
 
 .auth-form h2 {
     font-family: 'Barlow Condensed', sans-serif;
     text-align: center;
     margin-bottom: 1.5rem;
     font-size: 2rem;
-    /*font-weight: lighter;*/
     color: white;
 }
 
 .input-container {
     position: relative;
     width: 100%;
-
 }
 
 .input-container input, select {
@@ -753,7 +745,6 @@ footer {
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    /*background: white;*/
     padding: 0 5px;
     font-size: 16px;
     color: #999;
@@ -769,11 +760,9 @@ footer {
 .input-container input:not(:placeholder-shown) + label {
     top: 0;
     left: 10px;
-    /*font-size: 12px;*/
     color: #ceb218;
     font-size: 1.3rem;
 }
-
 
 .auth-form button {
     width: 80%;
@@ -787,7 +776,6 @@ footer {
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
 }
-
 
 .butt_con {
     display: flex;
@@ -817,7 +805,6 @@ footer {
     cursor: pointer;
 }
 
-
 .auth-form button:hover {
     background-color: #d3ba32;
 }
@@ -826,8 +813,6 @@ footer {
     display: none;
 }
 
-
-/*Plan*/
 .plan-container {
     max-width: 100%;
     padding: 20px;
@@ -858,7 +843,6 @@ footer {
     margin-bottom: 20px;
 }
 
-/* Align heading to left */
 .current-plan h2 {
     margin-top: 0;
     color: rgba(255, 255, 255, 0.74);
@@ -866,7 +850,6 @@ footer {
     text-align: left;
 }
 
-/* Plan text styling */
 .current-plan p {
     margin-top: 0;
     margin-bottom: 40px;
@@ -875,7 +858,6 @@ footer {
     font-weight: bold;
 }
 
-/* Action buttons layout */
 .action-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -884,7 +866,6 @@ footer {
     margin-top: 15px;
 }
 
-/* Style buttons */
 .action-buttons button {
     padding: 10px 16px;
     border: none;
@@ -895,7 +876,6 @@ footer {
     min-width: 40px;
 }
 
-/* Cancel */
 .cancel {
     background-color: #831b18;
     color: white;
@@ -905,7 +885,6 @@ footer {
     background-color: #c62828;
 }
 
-/* Downgrade */
 .downgrade {
     background-color: #886a1f;
     color: white;
@@ -915,7 +894,6 @@ footer {
     background-color: #f9a825;
 }
 
-/* Upgrade */
 .upgrade {
     background-color: var(--primary-accent);
     color: white;
@@ -925,22 +903,45 @@ footer {
     background-color: #388e3c;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 780px) {
     .plan-container h1 {
         font-size: 3.5em;
     }
 
+
+    .auth-form {
+        max-width: 300px;
+        width: 100%;
+    }
+
+    .auth-form h2 {
+        font-size: 1.5rem;
+    }
+
+    .input-container {
+        position: relative;
+        width: 90%;
+    }
+
+    .input-container input, select {
+        width: 90%;
+    }
+
+    .auth-form button {
+        width: 60%;
+    }
+
+
     .current-plan h2 {
         font-size: 1.5rem;
-        text-align: left !important;
-        align-items: flex-start !important;
+        text-align: left;
+        align-items: flex-start;
     }
 
     .current-plan .plan-titles {
         display: flex;
         flex-direction: column;
         align-items: start;
-        /*justify-content: start;*/
     }
 
     .current-plan p {
@@ -989,7 +990,6 @@ footer {
     transition: transform 0.3s ease;
 }
 
-
 .plan-card:nth-child(1) {
     background: linear-gradient(135deg, #cd7f32, #563214);
     color: #fff5e6;
@@ -1004,7 +1004,6 @@ footer {
     background: linear-gradient(135deg, #e5e4e2, #757171);
     color: #1a1a1a;
 }
-
 
 .plan-card h3 {
     font-weight: bold;
@@ -1049,9 +1048,6 @@ footer {
     justify-content: space-between;
 }
 
-
-/*--------------------------------------------------------------------------------------------------------------------*/
-/*Toast container*/
 #toast-container {
     position: fixed;
     top: 20px;
@@ -1066,7 +1062,7 @@ footer {
 }
 
 .toast {
-    min-width: 250px;
+    min-width: 240px;
     padding: 1rem 1.5rem;
     border-radius: 8px;
     color: white;
@@ -1075,11 +1071,11 @@ footer {
 }
 
 .toast.error {
-    background-color: var(--primary-accent); /* Red */
+    background-color: var(--primary-accent);
 }
 
 .toast.success {
-    background-color: var(--secondary-accent); /* Yellow */
+    background-color: var(--secondary-accent);
     color: #ffffff;
 }
 
@@ -1103,3 +1099,30 @@ footer {
 }
 
 
+/* Enhance CTA button hover */
+.cta-btn:hover, .cta-button:hover {
+    transform: scale(1.1);
+    background-color: #d3ba32;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Pulse animation for service cards */
+.service-card:hover {
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Mobile animation optimization */
+@media (max-width: 600px) {
+    [data-aos] {
+        transition-duration: 600ms !important;
+    }
+}

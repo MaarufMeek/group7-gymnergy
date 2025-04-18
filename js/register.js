@@ -15,7 +15,7 @@ function showToast(message, type = "info") {
 
 // Class to manage cur_user data, including registration, login, logout, and plan subscription
 class User {
-    // Constructor initializes a cur_user object with basic properties and optional plan
+    // Constructor initializes a cur_user object with Bronze properties and optional plan
     constructor(name, email, password, phone, plan = null) {
         this.name = name;
         this.email = email;
@@ -58,7 +58,7 @@ class User {
     registerUser() {
         this.hasRegistered = true;
         this.saveUser();
-        alert("Registration successful!");
+        // alert("Registration successful!");
     }
 
     // Logs in the cur_user by validating their credentials
@@ -179,7 +179,9 @@ class PlanManager {
 
 
         // Check if already at highest plan or plan not found
-        if (index === -1 || index === this.plans.length - 1) {
+        if (this.currentPlan === 'No Plan') {
+            showToast('You currently have no plans', 'info')
+        } else if (index === -1 || index === this.plans.length - 1) {
             showToast('You are on the highest plan already', 'info')
         } else {
             const nextPlan = this.plans[index + 1]
@@ -267,7 +269,7 @@ if (authForm) {
             }
 
             if (localStorage.getItem(email)) {
-                alert("User already registered. Please log in.");
+                showToast('User already registered. Please log in')
                 isRegisterMode = false;
                 toggleBtn.click();
                 return;
@@ -275,16 +277,18 @@ if (authForm) {
 
             const newUser = new User(name, email, password, phone);
             newUser.registerUser();
+            showToast(`Hwy ${name} you are welcome to Gymnergy`, 'success')
             authForm.reset();
             isRegisterMode = false;
 
             // showToast(`Hey ${name}, welcome to Gymnergy`, 'success')
+            console.log("toggleBtn is", toggleBtn);
             toggleBtn.click();
 
         } else {
             const storedData = localStorage.getItem(email);
             if (!storedData) {
-                alert('no cur_user')
+                showToast("User does not exist", 'error')
                 // showToast('User not found. Please register', 'info')
                 return;
             }
@@ -294,7 +298,7 @@ if (authForm) {
 
             if (success) {
                 user.saveUser();
-                window.location.href = "http://localhost:63342/grroup7/plans.html";
+                window.location.href = "plans.html";
             } else {
                 // showToast('Incorrect password', 'error')
                 alert("Incorrect password!");
@@ -314,11 +318,11 @@ if (logoutBtn) {
         if (user) {
             user.logout();
             console.log('Logout successful');
-            window.location.href = 'http://localhost:63342/grroup7/register.html';
+            window.location.href = 'register.html';
         } else {
             alert('no cur_user')
             console.warn('No cur_user is currently logged in');
-            window.location.href = 'http://localhost:63342/grroup7/register.html';
+            window.location.href = 'register.html';
         }
     });
 }
@@ -331,14 +335,15 @@ const username = document.getElementById('username');
 if (user) {
     username.textContent = user.name;
 } else {
-    username.textContent = 'Guest'
+    username.textContent = 'Guest' || ''
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 //selecting and displaying plans
-const basic = document.getElementById('basicBtn');
-const gold = document.getElementById('premiumBtn');
-const platinum = document.getElementById('platinumBtn');
+const Bronze = document.getElementById('basicBtn');
+const Gold = document.getElementById('premiumBtn');
+const Platinum = document.getElementById('platinumBtn');
+
 const cancel = document.getElementById('cancel');
 const downgrade = document.getElementById('download');
 const upgrade = document.getElementById('upgrade');
@@ -348,21 +353,21 @@ const pricePlatinum = document.getElementById('pricePlatinum');
 
 const plan = new PlanManager();
 
-priceBasic.innerText = plan.plans.find(plan => plan.name ==='Bronze').price
-priceGold.innerText = plan.plans.find(plan => plan.name ==='Gold').price
-pricePlatinum.innerText = plan.plans.find(plan => plan.name ==='Platinum').price
+priceBasic.innerText = plan.plans.find(plan => plan.name === 'Bronze').price
+priceGold.innerText = plan.plans.find(plan => plan.name === 'Gold').price
+pricePlatinum.innerText = plan.plans.find(plan => plan.name === 'Platinum').price
 
-basic.addEventListener('click', e => {
+Bronze.addEventListener('click', e => {
     e.preventDefault();
     plan.selectPlan('Bronze')
 })
 
-gold.addEventListener('click', e => {
+Gold.addEventListener('click', e => {
     e.preventDefault();
     plan.selectPlan('Gold')
 })
 
-platinum.addEventListener('click', e => {
+Platinum.addEventListener('click', e => {
     e.preventDefault();
     plan.selectPlan('Platinum')
 })
@@ -371,6 +376,9 @@ cancel.addEventListener('click', e => {
     e.preventDefault();
     plan.cancelPlan();
 })
+
+
+
 
 
 downgrade.addEventListener('click', e => {

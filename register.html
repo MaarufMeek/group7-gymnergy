@@ -20,21 +20,25 @@
     <nav class="navbar">
         <div class="logo"><span>Gym</span>nergy</div>
 
+        <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
             <button class="toggle-btn" id="toggle-Btn"><i class="fa fa-angle-left"></i></button>
             <nav class="sidebar-nav">
-                <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
-                <a href="#services" title="Services"><i class="fas fa-dumbbell"></i></a>
-                <a href="plans.html" title="Plans"><i class="fas fa-clipboard-list"></i></a>
+                <a href="#" title="Home"><i class="fa fa-home"></i></a>
+                <a href="index.html#services" title="Services"><i class="fas fa-dumbbell"></i></a>
                 <a href="register.html" title="Login/Register"><i class="fas fa-user-plus"></i></a>
+                <a href="plans.html" title="Plans"><i class="fas fa-clipboard-list"></i></a>
+                <a href="motivation.html" title="Motivation"><i class="fas fa-lightbulb"></i></a>
             </nav>
         </div>
 
+        <!-- Make sure this has an ID -->
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="plans.html">Plans</a></li>
-            <li><a href="register.html">Register/Login</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="plans.html" id="plans">Plans</a></li>
+            <li><a href="motivation.html" id="motivation">Motivation</a></li>
+            <li><a href="register.html">Login/Register</a></li>
         </ul>
     </nav>
 </header>
@@ -84,7 +88,16 @@
 <div id="toast-container"></div>
 
 <script src="js/register.js"></script>
-<script src="js/script.js"></script>
+<script>
+     const sidebar = document.getElementById('sidebar');
+    const toggle = document.getElementById('toggle-Btn');
+
+    toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('expanded');
+        toggle.innerHTML = sidebar.classList.contains('expanded') ?
+            '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
+    });
+</script>
 
 </body>
 </html>
