@@ -102,14 +102,7 @@ body {
   
   /* Responsive tweak for smaller screens */
   @media (max-width: 600px) {
-    /*.img-pair {*/
-    /*  flex-direction: column;*/
-    /*}*/
 
-    /*.img-pair img {*/
-    /*  width: 100%;*/
-    /*  height: 200px;*/
-    /*}*/
   }
 
 
