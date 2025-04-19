@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/motivation.css"/>
-     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
           rel="stylesheet">
 
     <!-- Fonts and Icons -->
@@ -56,7 +56,8 @@
     <h2 class="section-title">Real Transformations</h2>
     <div class="transform-grid">
         <!-- Card 1 – Mike -->
-        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="0" data-aos-once="true">
+        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="0"
+             data-aos-once="true">
             <div class="img-pair">
                 <img src="images/before1.jpg" alt="Before - Mike" class="before">
                 <img src="images/after1.jpg" alt="After - Mike" class="after">
@@ -65,7 +66,8 @@
         </div>
 
         <!-- Card 2 – Sarah -->
-        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100" data-aos-once="true">
+        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100"
+             data-aos-once="true">
             <div class="img-pair">
                 <img src="images/before2.jpg" alt="Before - Sarah" class="before">
                 <img src="images/after2.jpg" alt="After - Sarah" class="after">
@@ -74,7 +76,8 @@
         </div>
 
         <!-- Card 3 – David -->
-        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200" data-aos-once="true">
+        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200"
+             data-aos-once="true">
             <div class="img-pair">
                 <img src="images/before3.jpg" alt="Before - David" class="before">
                 <img src="images/after3.jpg" alt="After - David" class="after">
@@ -93,15 +96,18 @@
                 <p>"The pain you feel today will be the strength you feel tomorrow."</p>
                 <span>– Arnold Schwarzenegger</span>
             </div>
-            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" data-aos-once="true">
+            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"
+                 data-aos-once="true">
                 <p>"Discipline is choosing between what you want now and what you want most."</p>
                 <span>– Abraham Lincoln</span>
             </div>
-            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" data-aos-once="true">
+            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"
+                 data-aos-once="true">
                 <p>"Don’t limit your challenges. Challenge your limits."</p>
                 <span>– Jerry Dunn</span>
             </div>
-            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" data-aos-once="true">
+            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300"
+                 data-aos-once="true">
                 <p>"Your body can stand almost anything. It’s your mind you have to convince."</p>
                 <span>– Unknown</span>
             </div>
@@ -180,7 +186,8 @@
     <div class="cta-content">
         <h2>Feeling Inspired?</h2>
         <p>Join the Gymnergy community and begin your own transformation journey.</p>
-        <a href="register.html" class="cta-button" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100" data-aos-once="true">Start Your Journey</a>
+        <a href="register.html" class="cta-button" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100"
+           data-aos-once="true">Start Your Journey</a>
     </div>
 </section>
 
@@ -239,14 +246,24 @@
 
 <script src="js/motivation.js"></script>
 <script>
-const sidebar = document.getElementById('sidebar');
-const toggle = document.getElementById('toggle-Btn');
+    const sidebar = document.getElementById('sidebar');
+    const toggle = document.getElementById('toggle-Btn');
 
-toggle.addEventListener('click', () => {
-sidebar.classList.toggle('expanded');
-toggle.innerHTML = sidebar.classList.contains('expanded') ?
-'<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
-});
+    toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('expanded');
+        toggle.innerHTML = sidebar.classList.contains('expanded') ?
+            '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
+    });
+
+    const currentPage = window.location.pathname.split("/").pop();
+
+    document.querySelectorAll(".nav-links li a").forEach(link => {
+        const linkPage = link.getAttribute("href");
+
+        if (linkPage === currentPage) {
+            link.classList.add("active")
+        }
+    })
 </script>
 
 </body>

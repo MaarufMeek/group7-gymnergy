@@ -64,8 +64,8 @@ h1, h2, h3 {
 }
 
 .nav-links li a:hover::after,
-.nav-links li a:active::after {
-    width: 100%;
+.nav-links li a.active::after {
+  width: 100%;
 }
 
 @media (max-width: 780px) {
