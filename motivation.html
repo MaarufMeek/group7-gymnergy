@@ -255,8 +255,11 @@
             '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
     });
 
-    const currentPage = window.location.pathname.split("/").pop();
+    // underline the current active page/
 
+    //get current page link, like index.html
+    const currentPage = window.location.pathname.split("/").pop();
+    
     document.querySelectorAll(".nav-links li a").forEach(link => {
         const linkPage = link.getAttribute("href");
 

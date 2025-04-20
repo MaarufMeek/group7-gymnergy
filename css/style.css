@@ -92,6 +92,42 @@ h1, h2, h3 {
     }
 }
 
+/* Search Bar Styles */
+.search-container {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+#searchBar {
+    padding: 8px;
+    border-radius: 15px;
+    width: 300px;
+    max-width: 300px;
+    height: 18px;
+    border: 1px solid #282c34;
+    background-color: rgba(255, 255, 255, 0.94);
+    font-size: 14px;
+}
+#searchBtn {
+    padding: 8px;
+    background: #f44336;
+    width: 35px;
+    height: 35px;
+    color: white;
+    margin-left: 5px;
+    border: 1px solid #282c34;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#searchBtn:hover {
+    background: #cc0000;
+}
+@media (max-width: 768px) {
+    .search-container {
+        margin: 10px 0;
+    }
+}
+
 .sidebar {
     position: fixed;
     top: 0;
