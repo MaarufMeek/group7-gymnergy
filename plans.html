@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description"
+          content="Explore Gymnergy subscription plans - Bronze, Gold, Platinum - tailored to your fitness goals."/>
+    <meta name="keywords" content="gym plans, fitness subscriptions, Gymnergy plans, Bronze, Gold, Platinum"/>
     <title>Gym Subscription Plans</title>
     <link rel="stylesheet" href="css/style.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Abel&family=Barlow+Condensed&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- AOS CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-
-<!-- 🧭 Navigation -->
 <header>
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="logo"><span>Gym</span>nergy</div>
-
-        <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
-            <button class="toggle-btn" id="toggle-Btn"><i class="fa fa-angle-left"></i></button>
-            <nav class="sidebar-nav">
-                <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
-                <a href="index.html#services" title="Services"><i class="fas fa-dumbbell"></i></a>
-                <a href="register.html" title="Login/Register"><i class="fas fa-user-plus"></i></a>
-                <a href="plans.html" title="Plans"><i class="fas fa-clipboard-list"></i></a>
-                <a href="motivation.html" title="Motivation"><i class="fas fa-lightbulb"></i></a>
+            <button class="toggle-btn" id="toggle-Btn" aria-label="Toggle sidebar"><i class="fa fa-angle-left"></i>
+            </button>
+            <nav class="sidebar-nav" aria-label="Sidebar navigation">
+                <a href="index.html" title="Home" aria-label="Home"><i class="fa fa-home"></i></a>
+                <a href="index.html#services" title="Services" aria-label="Services"><i class="fas fa-dumbbell"></i></a>
+                <a href="register.html" title="Login/Register" aria-label="Login or Register"><i
+                        class="fas fa-user-plus"></i></a>
+                <a href="plans.html" title="Plans" aria-label="Plans"><i class="fas fa-clipboard-list"></i></a>
+                <a href="motivation.html" title="Motivation" aria-label="Motivation"><i
+                        class="fas fa-lightbulb"></i></a>
             </nav>
         </div>
-
-        <!-- Make sure this has an ID -->
-        <ul class="nav-links" id="navLinks">
+        <ul class="nav-links" id="navLinks" aria-label="Main menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#services">Services</a></li>
             <li><a href="plans.html" id="plans">Plans</a></li>
@@ -40,7 +39,6 @@
         </ul>
     </nav>
 </header>
-
 <div class="plan-container">
     <div class="plan-info" data-aos="zoom-in" data-aos-duration="1000">
         <h1>Your Gym Plan</h1>
@@ -48,29 +46,26 @@
             <i class="fa fa-user-circle"></i>
             <p id="username" data-aos="fade-right" data-aos-duration="800"></p>
         </div>
-        <!-- Current Plan -->
         <div class="current-plan">
             <div class="plan-titles">
                 <h2>Current Plan:</h2>
                 <p id="plan-name"></p>
             </div>
-
             <div class="action-buttons">
                 <button id="cancel" class="cancel">Cancel <i class="fa fa-xmark"></i></button>
                 <button id="download" class="downgrade">Downgrade <i class="fa fa-level-down"></i></button>
-                <button id="upgrade" class="upgrade">Upgrade <i class="fa fa-level-up"></i>
-                </button>
+                <button id="upgrade" class="upgrade">Upgrade <i class="fa fa-level-up"></i></button>
             </div>
         </div>
     </div>
-
 </div>
-
 <h2 class="plan-header">Select Plans</h2>
-<!-- Plan Cards -->
 <div class="plans-grid">
     <div class="plan-card" data-aos="fade-right" data-aos-duration="800">
-        <h3>BRONZE</h3>
+        <div class="plan-header">
+            <h3>BRONZE</h3>
+            <p id="priceBasic"></p>
+        </div>
         <p>Great for beginners.</p>
         <ul>
             <li><i class="fa fa-check checked"></i> Access to Gym Equipment</li>
@@ -81,12 +76,14 @@
         </ul>
         <div class="button-price">
             <button id="basicBtn">Select</button>
-            <p id="priceBasic"></p>
+            <button id="payBasic" class="pay-btn">Pay Now</button>
         </div>
     </div>
-
     <div class="plan-card" data-aos="fade-up" data-aos-duration="800">
-        <h3>GOLD</h3>
+        <div class="plan-header">
+            <h3>GOLD</h3>
+            <p id="priceGold"></p>
+        </div>
         <p>Ideal for regular fitness lovers.</p>
         <ul>
             <li><i class="fa fa-check checked"></i> Gym Equipment + Strength</li>
@@ -97,12 +94,14 @@
         </ul>
         <div class="button-price">
             <button id="premiumBtn">Select</button>
-            <p id="priceGold"></p>
+            <button id="payGold" class="pay-btn">Pay Now</button>
         </div>
     </div>
-
     <div class="plan-card" data-aos="fade-left" data-aos-duration="800">
-        <h3>PLATINUM</h3>
+        <div class="plan-header">
+            <h3>PLATINUM</h3>
+            <p id="pricePlatinum"></p>
+        </div>
         <p>All-inclusive fitness experience.</p>
         <ul>
             <li><i class="fa fa-check checked"></i> All Gym Services</li>
@@ -114,72 +113,55 @@
         </ul>
         <div class="button-price">
             <button class="plan" id="platinumBtn">Select</button>
-            <p id="pricePlatinum"></p>
+            <button id="payPlatinum" class="pay-btn">Pay Now</button>
         </div>
-
-
     </div>
 </div>
-
 <div id="toast-container"></div>
-
-<!-- 🔗 Footer -->
 <footer class="footer">
     <div class="footer-content">
         <div class="footer-section contact">
             <p>Contact Us</p>
-            <p>Email: meek@admin.com</p>
+            <p>Email: <a href="mailto:support@gymnergy.com">support@gymnergy.com</a></p>
             <p>Phone: +123 456 7890</p>
         </div>
-
         <div class="footer-section social">
             <div class="social-icons">
-                <a href="#" class="social-icon facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon facebook" target="_blank" aria-label="Facebook"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon twitter" target="_blank" aria-label="Twitter"><i
+                        class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon instagram" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon linkedin" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
-    AOS.init(
-        {
-            duration: 800,
-            once: true,
-        }
-    );
+    AOS.init({duration: 800, once: true});
 </script>
 <script src="js/register.js"></script>
 <script>
-     const sidebar = document.getElementById('sidebar');
+    const sidebar = document.getElementById('sidebar');
     const toggle = document.getElementById('toggle-Btn');
-
     toggle.addEventListener('click', () => {
         sidebar.classList.toggle('expanded');
-        toggle.innerHTML = sidebar.classList.contains('expanded') ?
-            '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
+        toggle.innerHTML = sidebar.classList.contains('expanded') ? '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
     });
-
     const currentPage = window.location.pathname.split("/").pop();
-
     document.querySelectorAll(".nav-links li a").forEach(link => {
         const linkPage = link.getAttribute("href");
-
-        if(linkPage === currentPage) {
-            link.classList.add("active")
+        if (linkPage === currentPage) {
+            link.classList.add("active");
         }
-    })
-</script>
-<script>
+    });
     const cur_user = User.getCurrentUser();
     if (!cur_user) {
-        window.location.href = 'register.html'
+        window.location.href = 'register.html';
     }
-
-
 </script>
-
 </body>
 </html>

@@ -10,6 +10,17 @@ function showToast(message, type = "info") {
     }, 3000);
 }
 
+function obfuscate(str) {
+    return btoa(str.split('').reverse().join(''));
+}
+function deobfuscate(str) {
+    return atob(str).split('').reverse().join('');
+}
+
+function generateToken() {
+    return Math.random().toString(36).substr(2);
+}
+
 class User {
     constructor(name, email, password, phone, plan = null) {
         this.name = name;
@@ -23,9 +34,9 @@ class User {
     static getCurrentUser() {
         const email = localStorage.getItem("currentUser");
         if (!email) return null;
-        const data = localStorage.getItem(email);
+        const data = localStorage.getItem(obfuscate(email));
         if (!data) return null;
-        const parsed = JSON.parse(data);
+        const parsed = JSON.parse(deobfuscate(data));
         const user = new User(parsed.name, parsed.email, parsed.password, parsed.phone, parsed.plan);
         user.isLoggedIn = parsed.isLoggedIn;
         user.hasRegistered = parsed.hasRegistered;
@@ -36,7 +47,7 @@ class User {
         return user && user.isLoggedIn;
     }
     saveUser() {
-        localStorage.setItem(this.email, JSON.stringify(this));
+        localStorage.setItem(obfuscate(this.email), obfuscate(JSON.stringify(this)));
     }
     registerUser() {
         this.hasRegistered = true;
@@ -46,7 +57,7 @@ class User {
         if (this.email === email && this.password === password) {
             this.isLoggedIn = true;
             this.saveUser();
-            localStorage.setItem("currentUser", this.email);
+            localStorage.setItem("currentUser", email);
             return true;
         }
         return false;
@@ -132,6 +143,15 @@ class PlanManager {
         const prevPlan = this.plans[index - 1];
         this.selectPlan(prevPlan.name);
     }
+    processPayment(planName) {
+        const plan = this.plans.find(p => p.name === planName);
+        if (confirm(`Proceed to pay ${plan.price} for ${planName} plan?`)) {
+            showToast(`Payment of ${plan.price} for ${planName} successful!`, 'success');
+            this.selectPlan(planName);
+        } else {
+            showToast('Payment cancelled', 'info');
+        }
+    }
 }
 
 const authForm = document.getElementById("authForm");
@@ -141,6 +161,8 @@ const submitBtn = document.getElementById("submitBtn");
 const registerFields = document.getElementById("registerFields");
 
 let isRegisterMode = false;
+let formToken = generateToken();
+localStorage.setItem('formToken', formToken);
 
 if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
@@ -149,6 +171,8 @@ if (toggleBtn) {
         formTitle.textContent = isRegisterMode ? "Register" : "Login";
         submitBtn.textContent = isRegisterMode ? "Create Account" : "Log In";
         toggleBtn.innerHTML = isRegisterMode ? "Back to Login" : "<i class=\"fa fa-user-plus\"></i> Register";
+        formToken = generateToken();
+        localStorage.setItem('formToken', formToken);
     });
 }
 
@@ -169,6 +193,11 @@ function validatePhone(phone) {
 if (authForm) {
     authForm.addEventListener("submit", (e) => {
         e.preventDefault();
+        const storedToken = localStorage.getItem('formToken');
+        if (storedToken !== formToken) {
+            showToast('Invalid form submission', 'error');
+            return;
+        }
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
         if (!email || !password) {
@@ -194,7 +223,7 @@ if (authForm) {
                 showToast('Please enter a valid phone number (10-15 digits)', 'error');
                 return;
             }
-            if (localStorage.getItem(email)) {
+            if (localStorage.getItem(obfuscate(email))) {
                 showToast('User already registered. Please log in', 'info');
                 isRegisterMode = false;
                 toggleBtn.click();
@@ -206,17 +235,21 @@ if (authForm) {
             authForm.reset();
             isRegisterMode = false;
             toggleBtn.click();
+            formToken = generateToken();
+            localStorage.setItem('formToken', formToken);
         } else {
-            const storedData = localStorage.getItem(email);
+            const storedData = localStorage.getItem(obfuscate(email));
             if (!storedData) {
                 showToast("User does not exist", 'error');
                 return;
             }
-            const user = Object.assign(new User(), JSON.parse(storedData));
+            const user = Object.assign(new User(), JSON.parse(deobfuscate(storedData)));
             const success = user.login(email, password);
             if (success) {
                 user.saveUser();
                 window.location.href = "plans.html";
+                formToken = generateToken();
+                localStorage.setItem('formToken', formToken);
             } else {
                 showToast('Incorrect password', 'error');
             }
@@ -249,6 +282,9 @@ if (user) {
 const Bronze = document.getElementById('basicBtn');
 const Gold = document.getElementById('premiumBtn');
 const Platinum = document.getElementById('platinumBtn');
+const payBasic = document.getElementById('payBasic');
+const payGold = document.getElementById('payGold');
+const payPlatinum = document.getElementById('payPlatinum');
 const cancel = document.getElementById('cancel');
 const downgrade = document.getElementById('download');
 const upgrade = document.getElementById('upgrade');
@@ -275,6 +311,21 @@ Gold.addEventListener('click', e => {
 Platinum.addEventListener('click', e => {
     e.preventDefault();
     plan.selectPlan('Platinum');
+});
+
+payBasic.addEventListener('click', e => {
+    e.preventDefault();
+    plan.processPayment('Bronze');
+});
+
+payGold.addEventListener('click', e => {
+    e.preventDefault();
+    plan.processPayment('Gold');
+});
+
+payPlatinum.addEventListener('click', e => {
+    e.preventDefault();
+    plan.processPayment('Platinum');
 });
 
 cancel.addEventListener('click', e => {
