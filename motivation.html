@@ -47,30 +47,30 @@
 </header>
 
 <!-- Hero Section -->
-<section class="hero-banner" data-aos="zoom-out" data-aos-duration="1500" data-aos-once="true">
+<section class="hero-banner" data-aos="zoom-out" data-aos-duration="1000" data-aos-once="true">
     <h1 data-aos="fade-up" data-aos-duration="1000">Transform Your Body, Empower Your Mind</h1>
 </section>
 
 <!-- Transformations Section -->
-<section class="transformations" data-aos="zoom-in" data-aos-duration="800" data-aos-once="true">
+<section class="transformations" data-aos="zoom-in" data-aos-duration="500" data-aos-once="true">
     <h2 class="section-title">Real Transformations</h2>
     <div class="transform-grid">
         <!-- Card 1 – Mike -->
-        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="0"
+        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="0"
              data-aos-once="true">
             <div class="img-pair">
-                <img src="images/before1.jpg" alt="Before - Mike" class="before">
-                <img src="images/after1.jpg" alt="After - Mike" class="after">
+                <img src="images/before1.jpg" alt="Before - Mike" class="before" loading="lazy">
+                <img src="images/after1.jpg" alt="After - Mike" class="after" loading="lazy">
             </div>
             <div class="caption">Mike – Lost 12kg in 8 Weeks</div>
         </div>
 
         <!-- Card 2 – Sarah -->
-        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100"
+        <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="100"
              data-aos-once="true">
             <div class="img-pair">
-                <img src="images/before2.jpg" alt="Before - Sarah" class="before">
-                <img src="images/after2.jpg" alt="After - Sarah" class="after">
+                <img src="images/before2.jpg" alt="Before - Sarah" class="before" loading="lazy">
+                <img src="images/after2.jpg" alt="After - Sarah" class="after" loading="lazy">
             </div>
             <div class="caption">Sarah – 3 Months of Strength Training</div>
         </div>
@@ -79,8 +79,8 @@
         <div class="transform-card side-by-side" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200"
              data-aos-once="true">
             <div class="img-pair">
-                <img src="images/before3.jpg" alt="Before - David" class="before">
-                <img src="images/after3.jpg" alt="After - David" class="after">
+                <img src="images/before3.jpg" alt="Before - David" class="before" loading="lazy">
+                <img src="images/after3.jpg" alt="After - David" class="after" loading="lazy">
             </div>
             <div class="caption">David – Built Muscle, Gained Confidence</div>
         </div>
@@ -88,25 +88,25 @@
 </section>
 
 <!-- Quote Carousel Section -->
-<section class="quote-carousel" data-aos="fade-up" data-aos-duration="800" data-aos-once="true">
+<section class="quote-carousel" data-aos="fade-up" data-aos-duration="400" data-aos-once="true">
     <h2 class="section-title">Fuel Your Fire 🔥</h2>
     <div class="carousel-container">
         <div class="carousel-track">
-            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" data-aos-once="true">
+            <div class="quote-card" data-aos="fade-up" data-aos-duration="400" data-aos-delay="0" data-aos-once="true">
                 <p>"The pain you feel today will be the strength you feel tomorrow."</p>
                 <span>– Arnold Schwarzenegger</span>
             </div>
-            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"
+            <div class="quote-card" data-aos="fade-up" data-aos-duration="400" data-aos-delay="100"
                  data-aos-once="true">
                 <p>"Discipline is choosing between what you want now and what you want most."</p>
                 <span>– Abraham Lincoln</span>
             </div>
-            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"
+            <div class="quote-card" data-aos="fade-up" data-aos-duration="400" data-aos-delay="200"
                  data-aos-once="true">
                 <p>"Don’t limit your challenges. Challenge your limits."</p>
                 <span>– Jerry Dunn</span>
             </div>
-            <div class="quote-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300"
+            <div class="quote-card" data-aos="fade-up" data-aos-duration="400" data-aos-delay="300"
                  data-aos-once="true">
                 <p>"Your body can stand almost anything. It’s your mind you have to convince."</p>
                 <span>– Unknown</span>
@@ -121,10 +121,10 @@
 </section>
 
 <!-- Video Section -->
-<section class="video-section" data-aos="zoom-in" data-aos-duration="800" data-aos-once="true">
+<section class="video-section" data-aos="zoom-in" data-aos-duration="400" data-aos-once="true">
     <h2 class="section-title">Get Inspired 🎬</h2>
     <!-- Main Gym Walkthrough Video -->
-    <div class="main-video" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="0" data-aos-once="true">
+    <div class="main-video" data-aos="zoom-in" data-aos-duration="400" data-aos-delay="0" data-aos-once="true">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/KjoKlmLz0TI?si=BO6ONj7fDFD6WGoL"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -259,7 +259,7 @@
 
     //get current page link, like index.html
     const currentPage = window.location.pathname.split("/").pop();
-    
+
     document.querySelectorAll(".nav-links li a").forEach(link => {
         const linkPage = link.getAttribute("href");
 

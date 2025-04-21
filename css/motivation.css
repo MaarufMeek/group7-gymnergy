@@ -5,24 +5,24 @@ body {
     color: #ffffff;
     font-family: 'Abel', sans-serif;
   }
-  
+
   section {
     padding: 60px 20px;
     max-width: 1200px;
     margin: 0 auto;
   }
-  
+
   h1, h2, h3 {
     font-family: 'Bebas Neue', cursive;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
-  
+
   a {
     text-decoration: none;
     color: inherit;
   }
-  
+
   .hero-banner {
     background: url('../images/inspiration-bg.jpg') no-repeat center center/cover;
     height: 60vh;
@@ -31,7 +31,7 @@ body {
     justify-content: center;
     text-align: center;
   }
-  
+
   .hero-banner h1 {
     font-size: 4rem;
     color: #fff;
@@ -40,7 +40,7 @@ body {
     border-radius: 10px;
   }
 
-  
+
 
 
   /* === TRANSFORMATION STORIES (Side-by-Side) === */
@@ -58,7 +58,7 @@ body {
     gap: 40px;
     padding: 0 20px;
   }
-  
+
   .transform-card.side-by-side {
     background: #1a1a1a;
     border-radius: 15px;
@@ -70,18 +70,18 @@ body {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .transform-card:hover {
     transform: translateY(-10px);
   }
-  
+
   .img-pair {
     display: flex;
     justify-content: space-between;
     width: 100%;
     gap: 10px;
   }
-  
+
   .img-pair img {
     width: 50%;
     height: 280px;
@@ -89,7 +89,7 @@ body {
     border-radius: 10px;
     transition: transform 0.3s;
   }
-  
+
   .caption {
     margin-top: 15px;
     text-align: center;
@@ -99,7 +99,7 @@ body {
     padding: 10px;
     border-radius: 8px;
   }
-  
+
   /* Responsive tweak for smaller screens */
   @media (max-width: 600px) {
 
@@ -344,4 +344,3 @@ body {
     background: #000;
     color: #fff;
   }
-  
