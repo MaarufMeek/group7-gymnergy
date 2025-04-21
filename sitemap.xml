@@ -1,0 +1,29 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+    <url>
+        <loc>https://maarufmeek.github.io/group7-gymnergy/</loc>
+        <lastmod>2025-04-21T02:04:28+00:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://maarufmeek.github.io/group7-gymnergy/plans.html</loc>
+        <lastmod>2025-04-21T02:04:28+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://maarufmeek.github.io/group7-gymnergy/motivation.html</loc>
+        <lastmod>2025-04-21T02:04:28+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://maarufmeek.github.io/group7-gymnergy/register.html</loc>
+        <lastmod>2025-04-21T02:04:28+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://maarufmeek.github.io/group7-gymnergy/index.html</loc>
+        <lastmod>2025-04-21T02:04:28+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+</urlset>

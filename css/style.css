@@ -899,7 +899,11 @@ select {
     flex-direction: row;
     font-size: 1.3rem;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
+}
+
+.button-price #basicBtn, #premiumBtn, #platinumBtn {
+    display: none;
 }
 
 /* Payment Button Styles */
