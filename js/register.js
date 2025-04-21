@@ -80,14 +80,56 @@ class User {
 class PlanManager {
     constructor() {
         this.plans = [
-            {name: 'Bronze', price: 'GHS140/m'},
-            {name: 'Gold', price: 'GHS220/m'},
-            {name: 'Platinum', price: 'GHS422/m'}
+            {name: 'Bronze', price: 'GHS140/m', amount: 14000}, // Amount in pesewas for Stripe
+            {name: 'Gold', price: 'GHS220/m', amount: 22000},
+            {name: 'Platinum', price: 'GHS422/m', amount: 42200}
         ];
         this.currentUser = User.getCurrentUser();
         this.currentPlan = this.currentUser?.plan || 'No Plan';
         this.planElementName = document.getElementById('plan-name');
+        // Stripe initialization
+        this.stripe = Stripe('pk_test_51J9'); // Mock public key
+        this.elements = this.stripe.elements();
+        this.card = this.elements.create('card', {
+            style: {
+                base: {
+                    fontSize: '16px',
+                    color: '#32325d',
+                }
+            }
+        });
+        this.setupPaymentModal();
         this.updateUI();
+    }
+    setupPaymentModal() {
+        const modal = document.getElementById('paymentModal');
+        const closeModal = document.getElementById('closeModal');
+        const submitPayment = document.getElementById('submitPayment');
+        const cardElement = document.getElementById('cardElement');
+        if (cardElement) {
+            this.card.mount('#cardElement');
+        }
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+                this.card.clear();
+            });
+        }
+        if (submitPayment) {
+            submitPayment.addEventListener('click', () => {
+                // Simulate payment success (no real token creation)
+                showToast(`Payment for ${this.currentPlan} successful!`, 'success');
+                this.selectPlan(this.currentPlan);
+                modal.style.display = 'none';
+                this.card.clear();
+            });
+        }
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                this.card.clear();
+            }
+        });
     }
     updateUI() {
         if (this.planElementName) {
@@ -145,11 +187,16 @@ class PlanManager {
     }
     processPayment(planName) {
         const plan = this.plans.find(p => p.name === planName);
-        if (confirm(`Proceed to pay ${plan.price} for ${planName} plan?`)) {
-            showToast(`Payment of ${plan.price} for ${planName} successful!`, 'success');
-            this.selectPlan(planName);
-        } else {
-            showToast('Payment cancelled', 'info');
+        if (!plan) {
+            showToast('Invalid plan selected', 'error');
+            return;
+        }
+        this.currentPlan = planName;
+        const modal = document.getElementById('paymentModal');
+        const planDetails = document.getElementById('planDetails');
+        if (modal && planDetails) {
+            planDetails.textContent = `Pay ${plan.price} for ${planName} plan`;
+            modal.style.display = 'block';
         }
     }
 }
