@@ -1159,21 +1159,25 @@ select {
         display: flex;
     }
 
-    .search-container {
-        position: absolute;
-        top: 15%;
-        right: 50%;
-        transform: translateX(50%);
-    }
+   .search-container {
+    position: absolute;
+    top: 15%;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 9999;
+    transition: right 0.3s ease;
+}
 
-    #searchBar {
-        padding: 8px;
-        border: 1px solid #282c34;
-        border-radius: 15px;
-        font-size: 13px;
-        max-width: 170px;
-        height: 15px;
-    }
+#searchBar {
+    padding: 8px;
+    border: 1px solid #282c34;
+    border-radius: 15px;
+    font-size: 13px;
+    max-width: 170px;
+    height: 15px;
+    transition: max-width 0.3s ease;
+}
+
 
     .services-container {
         grid-template-columns: 1fr;

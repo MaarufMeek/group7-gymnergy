@@ -68,7 +68,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (toggle) {
         toggle.addEventListener('click', () => {
             sidebar.classList.toggle('expanded');
-            toggle.innerHTML = sidebar.classList.contains('expanded') ? '<i class="fa fa-angle-right"></i>' : '<i class="fa fa-angle-left"></i>';
+            const searchContainer = document.querySelector('.search-container');
+            const search = document.getElementById('searchBar');
+            
+            if(sidebar.classList.contains('expanded')) {
+                searchContainer.style.right = '70%';
+                search.style.maxWidth = '100px';
+            } else {
+                searchContainer.style.right = '50%';
+                search.style.maxWidth = '170px';
+            }      
+            
+            toggle.innerHTML = 
+                sidebar
+                    .classList
+                    .contains('expanded') ? 
+                    '<i class="fa fa-angle-right"></i>' : 
+                    '<i class="fa fa-angle-left"></i>';
         });
     }
 
