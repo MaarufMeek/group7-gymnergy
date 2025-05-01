@@ -87,6 +87,7 @@ class PlanManager {
         this.currentUser = User.getCurrentUser();
         this.currentPlan = this.currentUser?.plan || 'No Plan';
         this.planElementName = document.getElementById('plan-name');
+
         // Stripe initialization
         this.stripe = Stripe('pk_test_51J9'); // Mock public key
         this.elements = this.stripe.elements();
@@ -142,7 +143,6 @@ class PlanManager {
             return;
         }
         this.currentPlan = planName;
-        showToast(`You have selected ${planName} plan`, 'success');
         if (this.currentUser) {
             this.currentUser.updatePlan(planName);
         }
@@ -304,9 +304,11 @@ if (authForm) {
     });
 }
 
-const logoutBtn = document.getElementById("logout");
-if (logoutBtn) {
-    logoutBtn.addEventListener('click', (e) => {
+
+const logoutBtn = document.querySelectorAll(".logout");
+
+logoutBtn.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
         e.preventDefault();
         const user = User.getCurrentUser();
         if (user) {
@@ -316,7 +318,8 @@ if (logoutBtn) {
             window.location.href = 'register.html';
         }
     });
-}
+});
+
 
 const user = User.getCurrentUser();
 const username = document.getElementById('username');

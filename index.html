@@ -27,7 +27,7 @@
             <button class="toggle-btn" id="toggle-Btn" aria-label="Toggle sidebar"><i class="fa fa-angle-left"></i></button>
             <nav class="sidebar-nav" aria-label="Sidebar navigation">
                 <a href="#" title="Home" aria-label="Home"><i class="fa fa-home"></i></a>
-                <a href="#services" title="Services" aria-label="Services"><i class="fas fa-dumbbell"></i></a>
+                <a href="#" id="serviceBtn" title="Services" aria-label="Services"><i class="fas fa-dumbbell"></i></a>
                 <a href="plans.html" title="Plans" aria-label="Plans"><i class="fas fa-clipboard-list"></i></a>
                 <a href="motivation.html" title="Motivation" aria-label="Motivation"><i class="fas fa-lightbulb"></i></a>
                 <a href="register.html" title="Login/Register" aria-label="Login or Register"><i class="fas fa-user-plus"></i></a>
@@ -145,7 +145,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="plans.html">Plans</a></li>
                 <li><a href="register.html">Register/Login</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="motivation.html">Motivation</a></li>
             </ul>
         </div>
         <div class="footer-column" data-aos="fade-up" data-aos-delay="300">
@@ -173,6 +173,17 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
     AOS.init({ duration: 800, once: true });
+</script>
+
+<script>
+    document.getElementById('serviceBtn')
+        .addEventListener('click', ev => {
+            ev.preventDefault();
+            document.getElementById('services').scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            })
+        })
 </script>
 <script src="js/script.js"></script>
 <script src="js/register.js"></script>
