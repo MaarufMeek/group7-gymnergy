@@ -1,16 +1,23 @@
- @font-face {
+@font-face {
     font-family: 'Bebas Neue';
     font-style: normal;
     font-weight: normal;
     src: local('Bebas Neue Regular'), url('fonts/BebasNeue Regular.woff') format('woff');
-    }
+}
 
-     @font-face {
+@font-face {
     font-family: 'Barlow Condensed';
     font-style: normal;
     font-weight: normal;
     src: local('Barlow Condensed Regular'), url('fonts/BarlowCondensed-Regular.woff') format('woff');
-    }
+}
+
+@font-face {
+    font-family: 'Bebas Neue Thin';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bebas Neue Thin'), url('fonts/BebasNeue Thin.woff') format('woff');
+}
 
 
 :root {
@@ -550,9 +557,10 @@ h1, h2, h3 {
 
 .footer-column h3 {
     margin-bottom: 15px;
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Bebas Neue Thin', cursive;
     font-size: 22px;
     color: #fff;
+    letter-spacing: 2px;
 }
 
 .footer-column p,
@@ -1173,24 +1181,24 @@ select {
         display: flex;
     }
 
-   .search-container {
-    position: absolute;
-    top: 15%;
-    right: 50%;
-    transform: translateX(50%);
-    z-index: 9999;
-    transition: right 0.3s ease;
-}
+    .search-container {
+        position: absolute;
+        top: 15%;
+        right: 50%;
+        transform: translateX(50%);
+        z-index: 9999;
+        transition: right 0.3s ease;
+    }
 
-#searchBar {
-    padding: 8px;
-    border: 1px solid #282c34;
-    border-radius: 15px;
-    font-size: 13px;
-    max-width: 170px;
-    height: 15px;
-    transition: max-width 0.3s ease;
-}
+    #searchBar {
+        padding: 8px;
+        border: 1px solid #282c34;
+        border-radius: 15px;
+        font-size: 13px;
+        max-width: 170px;
+        height: 15px;
+        transition: max-width 0.3s ease;
+    }
 
 
     .services-container {
